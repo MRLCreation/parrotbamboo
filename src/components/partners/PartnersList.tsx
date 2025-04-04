@@ -34,7 +34,8 @@ const PartnersList: React.FC<PartnersListProps> = ({ partners }) => {
 
   // For mobile: Display partners in a carousel
   if (isMobile) {
-    const displayedPartners = showAll ? partners : partners.slice(0, 8);
+    // Display all partners if showAll is true, otherwise show only the first 6
+    const displayedPartners = showAll ? partners : partners.slice(0, 6);
     
     return (
       <div className="px-1">

@@ -27,7 +27,7 @@ export function useIsMobile() {
         resizeTimeout = window.setTimeout(() => {
           resizeTimeout = null;
           checkIsMobile();
-        }, 250); // Wait 250ms between resize checks (increased from 150ms)
+        }, 350); // More aggressive throttle: 350ms between resize checks
       }
     }
     

@@ -1,17 +1,20 @@
 
 import React from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
+import { useIsMobile } from '@/hooks/use-mobile';
 import {
   FooterLogo,
   FooterQuickLinks,
   FooterServices,
   FooterConnect, 
   FooterCopyright,
-  FooterDecoration
+  FooterDecoration,
+  FooterMobile
 } from './footer';
 
 export default function Footer() {
   const { t, language } = useLanguage();
+  const isMobile = useIsMobile();
 
   const socialLinks = {
     linkTree: "https://linktr.ee/parrotbamboo",
@@ -24,6 +27,16 @@ export default function Footer() {
     twitter: "https://twitter.com/ParrotBamboo"
   };
 
+  // Use mobile-optimized footer on mobile devices
+  if (isMobile) {
+    return (
+      <footer className="bg-dark-lighter border-t border-neon-yellow/20 relative overflow-hidden" key={`footer-${language}`}>
+        <FooterMobile socialLinks={socialLinks} />
+      </footer>
+    );
+  }
+
+  // Desktop footer
   return (
     <footer className="bg-dark-lighter border-t border-neon-yellow/20 relative overflow-hidden" key={`footer-${language}`}>
       <FooterDecoration />
