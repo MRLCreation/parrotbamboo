@@ -7,23 +7,36 @@ export function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
 
   React.useEffect(() => {
-    // Enhanced mobile detection with orientation change support and throttling
-    const handleResize = () => {
-      // Get device width
+    // Function to check if current viewport is mobile
+    const checkIsMobile = () => {
       const width = window.innerWidth
       setIsMobile(width < MOBILE_BREAKPOINT)
     }
     
+    // Throttle function to prevent excessive resize callbacks
+    let resizeTimeout: number | null = null;
+    const handleResize = () => {
+      if (resizeTimeout === null) {
+        resizeTimeout = window.setTimeout(() => {
+          resizeTimeout = null;
+          checkIsMobile();
+        }, 150); // Wait 150ms between resize checks
+      }
+    }
+    
     // Initial check
-    handleResize()
+    checkIsMobile()
     
     // Add event listeners with improved performance
     window.addEventListener("resize", handleResize)
-    window.addEventListener("orientationchange", handleResize)
+    window.addEventListener("orientationchange", checkIsMobile)
     
     return () => {
       window.removeEventListener("resize", handleResize)
-      window.removeEventListener("orientationchange", handleResize)
+      window.removeEventListener("orientationchange", checkIsMobile)
+      if (resizeTimeout) {
+        window.clearTimeout(resizeTimeout);
+      }
     }
   }, [])
 

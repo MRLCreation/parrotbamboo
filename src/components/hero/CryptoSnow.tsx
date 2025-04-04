@@ -10,12 +10,24 @@ interface CryptoSnowflakeProps {
 }
 
 const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index, isMobile }) => {
-  // Calculate random positions and durations
-  // Adjust size and speed for mobile
-  const startY = `${Math.random() * 80 + 10}%`; // Random vertical position between 10-90%
-  const size = isMobile ? (Math.random() * 12 + 10) : (Math.random() * 18 + 12); // Slightly larger on both devices
-  const duration = isMobile ? (Math.random() * 18 + 20) : (Math.random() * 25 + 20); // Slower movement for better visibility
-  const delay = Math.random() * 5; // Random delay up to 5s
+  // Calculate random positions and durations with reduced complexity for mobile
+  const startY = `${Math.random() * 80 + 10}%`; 
+  const size = isMobile ? (Math.random() * 12 + 10) : (Math.random() * 18 + 12);
+  const duration = isMobile ? (Math.random() * 10 + 20) : (Math.random() * 25 + 20); 
+  const delay = Math.random() * 5;
+  
+  // Simplified animation for mobile
+  const mobileAnimationProps = {
+    x: "100vw",
+    opacity: [0, 0.8, 0]
+  };
+  
+  // Full animation for desktop
+  const desktopAnimationProps = {
+    x: "100vw",
+    y: [0, Math.random() * 20 - 10, Math.random() * 20 - 10, 0],
+    opacity: [0, 0.8, 0.9, 0.8, 0]
+  };
   
   return (
     <motion.div
@@ -26,17 +38,14 @@ const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index, isMo
         height: size,
       }}
       initial={{ x: -50, opacity: 0 }}
-      animate={{ 
-        x: "100vw",
-        y: [0, Math.random() * 20 - 10, Math.random() * 20 - 10, 0], // Gentle floating motion
-        opacity: [0, 0.8, 0.9, 0.8, 0] // Higher opacity for better visibility
-      }}
+      animate={isMobile ? mobileAnimationProps : desktopAnimationProps}
       transition={{ 
         duration: duration,
         repeat: Infinity,
         delay: delay,
         ease: "linear",
-        times: [0, 0.2, 0.5, 0.8, 1]
+        // Simpler timing for mobile
+        times: isMobile ? [0, 0.5, 1] : [0, 0.2, 0.5, 0.8, 1]
       }}
     >
       <img 
@@ -44,7 +53,7 @@ const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index, isMo
         alt="Crypto icon" 
         className="w-full h-full object-contain"
         style={{ 
-          filter: "drop-shadow(0 0 4px rgba(255,255,255,0.5))" // Enhanced glow effect
+          filter: isMobile ? "none" : "drop-shadow(0 0 4px rgba(255,255,255,0.5))"
         }}
       />
     </motion.div>
@@ -63,12 +72,11 @@ const cryptoLogos = [
 const CryptoSnow: React.FC = () => {
   const isMobile = useIsMobile();
   
-  // Reduce number of snowflakes - fewer, more impactful elements
-  const snowflakeCount = isMobile ? 2 : 4; // Even fewer for cleaner look
+  // Further reduced for mobile, just show 1 for better performance
+  const snowflakeCount = isMobile ? 1 : 4;
   
-  // Create deterministic selection to ensure we show each logo
+  // Create snowflakes
   const snowflakes = Array.from({ length: snowflakeCount }).map((_, index) => {
-    // Ensure we cycle through all logos deterministically
     const logoIndex = index % cryptoLogos.length;
     return (
       <CryptoSnowflake 

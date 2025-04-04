@@ -1,12 +1,30 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const MissionVisual: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   
-  const coinVariants = {
+  // Simpler variants for mobile
+  const mobileCoinVariants = {
+    initial: { y: -20, opacity: 0 },
+    animate: (i: number) => ({
+      y: 200,
+      opacity: [0, 1, 0],
+      rotate: 0,
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+        repeatType: "loop" as const
+      }
+    })
+  };
+  
+  // Original variants for desktop
+  const desktopCoinVariants = {
     initial: { y: -50, opacity: 0 },
     animate: (i: number) => ({
       y: 300,
@@ -21,12 +39,13 @@ const MissionVisual: React.FC = () => {
     })
   };
   
+  // Simpler launch animation
   const launchVariants = {
     initial: { y: 0 },
     animate: {
-      y: [-10, 10, -5, 5, 0],
+      y: isMobile ? [-5, 5, 0] : [-10, 10, -5, 5, 0],
       transition: {
-        duration: 3,
+        duration: isMobile ? 2 : 3,
         repeat: Infinity,
         repeatType: "reverse" as const
       }
@@ -36,20 +55,23 @@ const MissionVisual: React.FC = () => {
   const glowVariants = {
     initial: { opacity: 0.5, scale: 0.8 },
     animate: {
-      opacity: [0.5, 0.8, 0.5],
-      scale: [0.8, 1.2, 0.8],
+      opacity: isMobile ? [0.5, 0.7, 0.5] : [0.5, 0.8, 0.5],
+      scale: isMobile ? [0.9, 1.1, 0.9] : [0.8, 1.2, 0.8],
       transition: {
-        duration: 3,
+        duration: isMobile ? 2 : 3,
         repeat: Infinity,
         repeatType: "reverse" as const
       }
     }
   };
 
+  // Reduce coin count for mobile
+  const coinCount = isMobile ? 6 : 12;
+
   return (
     <div className="order-1 md:order-2 flex justify-center relative" ref={containerRef}>
       <div className="relative w-full max-w-sm">
-        {/* Animated glow effect */}
+        {/* Animated glow effect - simplified for mobile */}
         <motion.div
           variants={glowVariants}
           initial="initial"
@@ -59,16 +81,16 @@ const MissionVisual: React.FC = () => {
 
         <div className="w-full aspect-square rounded-xl p-1 border border-neon-yellow/20 relative z-10">
           <div className="w-full h-full rounded-lg bg-gradient-to-br from-dark-lighter via-dark to-dark flex items-center justify-center relative overflow-hidden backdrop-blur-lg">
-            {/* 3D glass effect with backdrop filter */}
-            <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+            {/* 3D glass effect with backdrop filter - simplified for mobile */}
+            <div className="absolute inset-0 bg-white/5"></div>
             
-            {/* Crypto coins animation */}
-            {Array.from({ length: 12 }).map((_, i) => (
+            {/* Crypto coins animation - fewer for mobile */}
+            {Array.from({ length: coinCount }).map((_, i) => (
               <motion.div
                 key={i}
                 className="absolute"
-                style={{ left: `${(i % 4) * 25 + 15}%`, top: "-20px" }}
-                variants={coinVariants}
+                style={{ left: `${(i % 3) * 30 + 15}%`, top: "-20px" }}
+                variants={isMobile ? mobileCoinVariants : desktopCoinVariants}
                 custom={i}
                 initial="initial"
                 animate="animate"
@@ -87,13 +109,10 @@ const MissionVisual: React.FC = () => {
                 initial="initial"
                 animate="animate"
                 className="inline-flex p-8 rounded-full bg-gradient-to-br from-dark-lighter/40 to-dark-lighter/10 backdrop-blur-md border border-white/10 mb-4 relative z-10 shadow-lg shadow-neon-purple/20"
-                style={{ backdropFilter: 'blur(10px)' }}
               >
-                {/* Larger rocket icon with glass effect */}
-                <Rocket className="w-24 h-24 text-neon-purple filter drop-shadow-lg" />
+                {/* Rocket icon with simplified effect */}
+                <Rocket className="w-24 h-24 text-neon-purple" />
               </motion.div>
-              
-              {/* Removed text as requested */}
             </div>
           </div>
         </div>
