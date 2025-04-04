@@ -40,5 +40,6 @@ export function useIsMobile() {
     }
   }, [])
 
+  // Return boolean instead of possibly undefined
   return !!isMobile
 }
