@@ -1,17 +1,20 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface CryptoSnowflakeProps {
   imageUrl: string;
   index: number;
+  isMobile: boolean;
 }
 
-const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index }) => {
+const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index, isMobile }) => {
   // Calculate random positions and durations
+  // Adjust size and speed for mobile
   const startY = `${Math.random() * 80 + 10}%`; // Random vertical position between 10-90%
-  const size = Math.random() * 15 + 10; // Random size between 10px and 25px
-  const duration = Math.random() * 20 + 15; // Random duration between 15-35s
+  const size = isMobile ? (Math.random() * 10 + 8) : (Math.random() * 15 + 10); // Smaller on mobile
+  const duration = isMobile ? (Math.random() * 15 + 15) : (Math.random() * 20 + 15); // Slightly faster on mobile
   const delay = Math.random() * 5; // Random delay up to 5s
   
   return (
@@ -25,7 +28,7 @@ const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index }) =>
       initial={{ x: -50, opacity: 0 }}
       animate={{ 
         x: "100vw",
-        y: [0, Math.random() * 30 - 15, Math.random() * 30 - 15, 0],
+        y: [0, Math.random() * 20 - 10, Math.random() * 20 - 10, 0], // Reduced movement for mobile
         opacity: [0, 0.6, 0.7, 0.6, 0]
       }}
       transition={{ 
@@ -55,21 +58,25 @@ const techLogos = [
   "/lovable-uploads/7120bbe4-a36d-43f7-b7ce-13972d047ef5.png", // Ethereum
   "/lovable-uploads/566698e8-c8ae-4125-8001-8f84d8771da0.png", // Bitcoin
   "/lovable-uploads/d46d80bf-7f84-4d8a-b312-5eb0ff837db8.png", // Binance (updated)
-  // Added robot icon and removed AI and Web3 icons
   "/robot-icon.svg",      // Robot icon
   "/blockchain-icon.svg", // Blockchain icon (keeping this one)
   "/lovable-uploads/e7ef6ba6-0836-46f7-9883-fd141695c8fe.png" // Uploaded robot icon
 ];
 
 const CryptoSnow: React.FC = () => {
-  // Reduced from 10 to 6 snowflakes with random tech logos
-  const snowflakes = Array.from({ length: 6 }).map((_, index) => {
+  const isMobile = useIsMobile();
+  
+  // Reduce number of snowflakes on mobile for better performance
+  const snowflakeCount = isMobile ? 3 : 6;
+  
+  const snowflakes = Array.from({ length: snowflakeCount }).map((_, index) => {
     const randomLogo = techLogos[Math.floor(Math.random() * techLogos.length)];
     return (
       <CryptoSnowflake 
         key={index} 
         imageUrl={randomLogo}
         index={index} 
+        isMobile={!!isMobile}
       />
     );
   });

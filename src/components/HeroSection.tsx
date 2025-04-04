@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight, Rocket, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -10,9 +11,9 @@ export default function HeroSection() {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark via-dark-lighter to-dark pt-20 relative overflow-hidden"
+      className={`min-h-screen flex items-center justify-center bg-gradient-to-br from-dark via-dark-lighter to-dark ${isMobile ? 'pt-16' : 'pt-20'} relative overflow-hidden`}
     >
-      {/* Professional background with subtle patterns and gradients */}
+      {/* Professional background with subtle patterns and gradients - optimized for mobile */}
       <motion.div
         className="absolute inset-0 z-0 opacity-30"
         initial={{ opacity: 0 }}
@@ -20,43 +21,48 @@ export default function HeroSection() {
         transition={{ duration: 2 }}
       >
         <div className="absolute w-full h-full">
-          {/* More sophisticated gradients for a professional look */}
+          {/* More sophisticated gradients for a professional look - fewer on mobile */}
           <motion.div 
-            className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-neon-yellow/5 filter blur-3xl"
+            className={`absolute top-1/4 left-1/4 rounded-full bg-neon-yellow/5 filter blur-3xl ${isMobile ? 'w-48 h-48' : 'w-96 h-96'}`}
             animate={{
               scale: [1, 1.2, 1],
               x: [0, 10, 0],
               y: [0, -10, 0],
             }}
             transition={{
-              duration: 15,
+              duration: isMobile ? 12 : 15,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
+          
+          {/* Only show this on desktop */}
+          {!isMobile && (
+            <motion.div 
+              className="absolute bottom-1/3 right-1/3 w-72 h-72 rounded-full bg-neon-blue/5 filter blur-3xl"
+              animate={{
+                scale: [1.2, 1, 1.2],
+                x: [0, -20, 0],
+                y: [0, 20, 0],
+              }}
+              transition={{
+                duration: 18,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 2
+              }}
+            />
+          )}
+          
           <motion.div 
-            className="absolute bottom-1/3 right-1/3 w-72 h-72 rounded-full bg-neon-blue/5 filter blur-3xl"
-            animate={{
-              scale: [1.2, 1, 1.2],
-              x: [0, -20, 0],
-              y: [0, 20, 0],
-            }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2
-            }}
-          />
-          <motion.div 
-            className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-neon-purple/5 filter blur-3xl"
+            className={`absolute top-1/3 right-1/4 rounded-full bg-neon-purple/5 filter blur-3xl ${isMobile ? 'w-32 h-32' : 'w-64 h-64'}`}
             animate={{
               scale: [0.8, 1.1, 0.8],
               x: [0, 15, 0],
               y: [0, -15, 0],
             }}
             transition={{
-              duration: 12,
+              duration: isMobile ? 8 : 12,
               repeat: Infinity,
               ease: "easeInOut",
               delay: 1
@@ -82,7 +88,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+            <h1 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-6xl lg:text-7xl'} font-bold mb-6`}>
               <motion.div
                 className="flex items-center justify-center mb-2"
                 initial={{ scale: 0.9 }}
@@ -116,7 +122,7 @@ export default function HeroSection() {
                     ease: "easeInOut"
                   }}
                 >
-                  <Rocket size={40} className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" strokeWidth={1.5} />
+                  <Rocket size={isMobile ? 30 : 40} className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" strokeWidth={1.5} />
                 </motion.div>
               </motion.div>
               <motion.span 
@@ -130,7 +136,7 @@ export default function HeroSection() {
             </h1>
             
             <motion.p 
-              className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto"
+              className={`${isMobile ? 'text-lg' : 'text-xl md:text-2xl'} text-gray-300 mb-10 max-w-2xl mx-auto`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.5 }}
@@ -150,7 +156,7 @@ export default function HeroSection() {
                   e.preventDefault();
                   document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-8 py-3 bg-gradient-to-r from-neon-blue to-neon-yellow rounded-full text-white font-medium flex items-center justify-center gap-2 transition-transform shadow-[0_0_15px_rgba(0,131,202,0.3)]"
+                className={`px-8 py-3 bg-gradient-to-r from-neon-blue to-neon-yellow rounded-full text-white font-medium flex items-center justify-center gap-2 transition-transform shadow-[0_0_15px_rgba(0,131,202,0.3)] mobile-button tap-target ${isMobile ? 'w-full' : ''}`}
                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(242, 183, 5, 0.5)" }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -176,7 +182,7 @@ export default function HeroSection() {
                   e.preventDefault();
                   document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-8 py-3 border border-neon-yellow rounded-full text-white font-medium hover:bg-neon-yellow/10 transition-colors"
+                className={`px-8 py-3 border border-neon-yellow rounded-full text-white font-medium hover:bg-neon-yellow/10 transition-colors mobile-button tap-target ${isMobile ? 'w-full' : ''}`}
                 whileHover={{ 
                   scale: 1.05,
                   boxShadow: "0 0 15px rgba(242, 183, 5, 0.4)"
@@ -190,9 +196,9 @@ export default function HeroSection() {
         </div>
       </div>
       
-      {/* Floating particles - kept but with reduced opacity */}
+      {/* Floating particles - reduced for mobile */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(10)].map((_, i) => (
+        {[...Array(isMobile ? 5 : 10)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full bg-white/70"

@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -13,10 +12,13 @@ export default {
 	theme: {
 		container: {
 			center: true,
-			padding: '2rem',
-			screens: {
-				'2xl': '1400px'
-			}
+			padding: {
+				DEFAULT: '1rem',
+				sm: '2rem',
+				lg: '4rem',
+				xl: '5rem',
+				'2xl': '6rem',
+			},
 		},
 		extend: {
 			colors: {
@@ -196,6 +198,18 @@ export default {
 				'circuit-pattern': "url('/circuit-pattern.svg')",
 				'shimmer-gradient': 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)',
 				'neon-glow': 'radial-gradient(circle at center, rgba(242, 183, 5, 0.2) 0%, rgba(15, 23, 42, 0) 70%)'
+			},
+			screens: {
+				'xs': '480px',
+			},
+			spacing: {
+				'safe-top': 'env(safe-area-inset-top)',
+				'safe-bottom': 'env(safe-area-inset-bottom)',
+				'safe-left': 'env(safe-area-inset-left)',
+				'safe-right': 'env(safe-area-inset-right)',
+			},
+			zIndex: {
+				'mobile-nav': '100',
 			}
 		}
 	},
