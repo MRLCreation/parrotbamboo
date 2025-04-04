@@ -4,7 +4,14 @@ import * as React from "react"
 const MOBILE_BREAKPOINT = 768
 
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
+  const [isMobile, setIsMobile] = React.useState<boolean>(() => {
+    // Initialize with the current window width if available (client-side)
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < MOBILE_BREAKPOINT
+    }
+    // Default to false for server-side rendering
+    return false
+  })
 
   React.useEffect(() => {
     // Function to check if current viewport is mobile
@@ -13,19 +20,16 @@ export function useIsMobile() {
       setIsMobile(width < MOBILE_BREAKPOINT)
     }
     
-    // Throttle function to prevent excessive resize callbacks
+    // More aggressive throttle function to prevent excessive resize callbacks
     let resizeTimeout: number | null = null;
     const handleResize = () => {
       if (resizeTimeout === null) {
         resizeTimeout = window.setTimeout(() => {
           resizeTimeout = null;
           checkIsMobile();
-        }, 150); // Wait 150ms between resize checks
+        }, 250); // Wait 250ms between resize checks (increased from 150ms)
       }
     }
-    
-    // Initial check
-    checkIsMobile()
     
     // Add event listeners with improved performance
     window.addEventListener("resize", handleResize)
@@ -40,6 +44,5 @@ export function useIsMobile() {
     }
   }, [])
 
-  // Return boolean instead of possibly undefined
-  return !!isMobile
+  return isMobile
 }

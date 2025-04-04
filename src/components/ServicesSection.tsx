@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { MessageSquare, BarChart3, Link, Users, FileText, ChevronRight, Globe, Youtube, Twitter, Image, Video, Zap, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { 
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface Service {
   icon: React.ReactNode;
@@ -11,6 +18,7 @@ interface Service {
 
 export default function ServicesSection() {
   const [activeService, setActiveService] = useState<number>(0);
+  const isMobile = useIsMobile();
   
   const services: Service[] = [
     {
@@ -89,9 +97,123 @@ export default function ServicesSection() {
     }
   ];
 
+  if (isMobile) {
+    return (
+      <section id="services" className="section-padding bg-dark relative overflow-hidden py-16">
+        <div className="absolute inset-0 z-0 opacity-10">
+          <div className="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat opacity-20"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="mb-12 text-center">
+            <span className="inline-block px-4 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-medium mb-4">Our Services</span>
+            <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-blue to-neon-purple">What We Offer</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto"></div>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full">
+            {services.map((service, index) => (
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`}
+                className="mb-3 border-0"
+              >
+                <AccordionTrigger className="bg-dark-lighter/50 rounded-lg p-3 text-left hover:no-underline">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-dark-lighter flex items-center justify-center text-gray-300">
+                      {service.icon}
+                    </div>
+                    <span className="font-medium text-white">{service.title}</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="p-4 bg-dark-lighter/30 rounded-b-lg mt-1">
+                  <p className="text-gray-300 mb-4">{service.description}</p>
+                  <div className="space-y-2">
+                    {service.features.map((feature, fIndex) => (
+                      <div key={fIndex} className="flex items-start gap-2">
+                        <div className="text-neon-purple mt-1">
+                          <ChevronRight size={16} />
+                        </div>
+                        <p className="text-gray-300">{feature}</p>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {index === 1 && (
+                    <div className="mt-6 pt-4 border-t border-white/10 grid grid-cols-3 gap-2">
+                      <div className="flex flex-col items-center space-y-2 p-3 rounded-lg bg-dark-lighter/70 border border-neon-purple/20">
+                        <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
+                          <img 
+                            src="/lovable-uploads/a00fcad1-0ec2-4e5f-990a-21d712dee436.png" 
+                            alt="Binance" 
+                            className="w-6 h-6" 
+                          />
+                        </div>
+                        <span className="text-white font-medium text-xs">Binance Live</span>
+                      </div>
+                      <div className="flex flex-col items-center space-y-2 p-3 rounded-lg bg-dark-lighter/70 border border-neon-blue/20">
+                        <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
+                          <img 
+                            src="/lovable-uploads/9dfc0dbd-c375-443d-9fe6-a78d72d3b770.png" 
+                            alt="X" 
+                            className="w-6 h-6" 
+                          />
+                        </div>
+                        <span className="text-white font-medium text-xs">X Audio</span>
+                      </div>
+                      <div className="flex flex-col items-center space-y-2 p-3 rounded-lg bg-dark-lighter/70 border border-[#0088cc]/20">
+                        <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
+                          <img 
+                            src="/lovable-uploads/f766f5d3-c5e9-421c-8717-cbd7f83eeaea.png" 
+                            alt="Telegram" 
+                            className="w-6 h-6" 
+                          />
+                        </div>
+                        <span className="text-white font-medium text-xs">Telegram</span>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {index === 5 && (
+                    <div className="mt-6 pt-4 border-t border-white/10 grid grid-cols-2 gap-3">
+                      <div className="flex items-center space-x-3 p-3 rounded-lg bg-dark-lighter/70">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center">
+                          <Image size={16} className="text-white" />
+                        </div>
+                        <span className="text-white text-xs">Graphics Design</span>
+                      </div>
+                      <div className="flex items-center space-x-3 p-3 rounded-lg bg-dark-lighter/70">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center">
+                          <Video size={16} className="text-white" />
+                        </div>
+                        <span className="text-white text-xs">Video Production</span>
+                      </div>
+                    </div>
+                  )}
+                  
+                  <div className="mt-6">
+                    <a 
+                      href="#contact" 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="inline-block px-5 py-2 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full text-white text-sm font-medium"
+                    >
+                      Get Started
+                    </a>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="services" className="section-padding bg-dark relative overflow-hidden">
-      {/* Background decorations */}
       <motion.div 
         className="absolute inset-0 z-0 opacity-10"
         initial={{ opacity: 0 }}
@@ -140,7 +262,6 @@ export default function ServicesSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          {/* Service Tabs */}
           <motion.div 
             className="lg:col-span-2"
             initial={{ opacity: 0, x: -30 }}
@@ -176,7 +297,6 @@ export default function ServicesSection() {
                       {service.title}
                     </span>
                     
-                    {/* Special voice animation for AMA */}
                     {index === 1 && (
                       <div className="voice-wave inline-flex mt-1">
                         <div className="bar h-2"></div>
@@ -191,14 +311,13 @@ export default function ServicesSection() {
             </div>
           </motion.div>
           
-          {/* Service Details */}
           <motion.div 
             className="lg:col-span-3 rounded-xl p-8 bg-dark-lighter/50 backdrop-blur-sm border border-white/10 shadow-xl"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            key={activeService} // Important for animation to trigger on tab change
+            key={activeService}
             animate={{ opacity: [0, 1], y: [20, 0] }}
           >
             <div className="mb-6">
@@ -223,7 +342,6 @@ export default function ServicesSection() {
               ))}
             </div>
             
-            {/* Special elements for AMA & Event Hosting */}
             {activeService === 1 && (
               <motion.div 
                 className="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4"
@@ -313,7 +431,6 @@ export default function ServicesSection() {
                   </div>
                 </div>
 
-                {/* Telegram Audio Live - UPDATED */}
                 <div className="flex flex-col items-center space-y-3 p-4 rounded-lg bg-dark-lighter/70 border border-[#0088cc]/20">
                   <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center">
                     <motion.div
@@ -359,7 +476,6 @@ export default function ServicesSection() {
               </motion.div>
             )}
             
-            {/* Special elements for Creative Services */}
             {activeService === 5 && (
               <motion.div 
                 className="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-4"

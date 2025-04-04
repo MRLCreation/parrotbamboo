@@ -14,19 +14,14 @@ export default function PartnersSection() {
   return (
     <section 
       id="partners" 
-      className={`py-20 ${isMobile ? 'pb-16' : 'py-32 md:py-40'} bg-dark-lighter relative overflow-hidden`}
+      className={`${isMobile ? 'py-16' : 'py-32 md:py-40'} bg-dark-lighter relative overflow-hidden`}
     >
-      {/* Simplified background elements for mobile */}
-      <motion.div 
-        className="absolute inset-0 opacity-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.15 }}
-        transition={{ duration: 1.2 }}
-      >
+      {/* Simplified background for all devices */}
+      <div className="absolute inset-0 opacity-10">
         <div className="h-full w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neon-blue/40 via-transparent to-neon-purple/30"></div>
-      </motion.div>
+      </div>
       
-      {/* Reduced decorative geometric shapes for mobile */}
+      {/* Decorative geometric shapes - only for desktop */}
       {!isMobile && (
         <>
           <motion.div 
@@ -44,12 +39,12 @@ export default function PartnersSection() {
         </>
       )}
       
-      {/* Grid pattern background - simplified for mobile */}
-      <div className={`absolute inset-0 bg-circuit-pattern ${isMobile ? 'opacity-3' : 'opacity-5'}`}></div>
+      {/* Grid pattern background - simplified for all devices */}
+      <div className="absolute inset-0 bg-circuit-pattern opacity-3"></div>
 
       <div className="container mx-auto relative z-10">
         <PartnersSectionHeader />
-        <div className={`mt-12 ${isMobile ? 'mb-8' : 'mt-16 mb-20'}`}>
+        <div className={`${isMobile ? 'mt-8 mb-6' : 'mt-16 mb-20'}`}>
           <PartnersList partners={partnersData} />
         </div>
       </div>

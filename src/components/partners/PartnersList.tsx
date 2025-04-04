@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Partner } from '../../types/Partner';
@@ -64,6 +65,7 @@ const PartnersList: React.FC<PartnersListProps> = ({ partners }) => {
         <ShowMoreButton 
           showAll={showAll} 
           toggleShowAll={() => setShowAll(!showAll)} 
+          isMobile={true}
         />
       </div>
     );

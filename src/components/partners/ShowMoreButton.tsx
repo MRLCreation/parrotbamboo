@@ -6,18 +6,19 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 interface ShowMoreButtonProps {
   showAll: boolean;
   toggleShowAll: () => void;
+  isMobile?: boolean;
 }
 
-const ShowMoreButton: React.FC<ShowMoreButtonProps> = ({ showAll, toggleShowAll }) => {
+const ShowMoreButton: React.FC<ShowMoreButtonProps> = ({ showAll, toggleShowAll, isMobile = false }) => {
   return (
     <div id="partners-show-more" className="flex justify-center mt-16">
       <motion.button
         onClick={toggleShowAll}
         className="group flex items-center gap-3 px-10 py-3.5 rounded-full bg-gradient-to-r from-neon-blue/10 to-neon-purple/10 border border-neon-blue/30 hover:border-neon-blue/60 text-white font-medium transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,131,202,0.25)]"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.98 }}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        whileHover={!isMobile ? { scale: 1.05 } : {}}
+        whileTap={!isMobile ? { scale: 0.98 } : {}}
+        initial={!isMobile ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+        whileInView={!isMobile ? { opacity: 1, y: 0 } : {}}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
@@ -25,21 +26,13 @@ const ShowMoreButton: React.FC<ShowMoreButtonProps> = ({ showAll, toggleShowAll 
           {showAll ? 'Show Less Partners' : 'Show More Partners'}
         </span>
         {showAll ? (
-          <motion.div
-            initial={{ y: 0 }}
-            animate={{ y: [0, -3, 0] }}
-            transition={{ duration: 1, repeat: Infinity }}
-          >
+          <div>
             <ChevronUp size={18} className="text-neon-blue group-hover:text-neon-yellow transition-colors" />
-          </motion.div>
+          </div>
         ) : (
-          <motion.div
-            initial={{ y: 0 }}
-            animate={{ y: [0, 3, 0] }}
-            transition={{ duration: 1, repeat: Infinity }}
-          >
+          <div>
             <ChevronDown size={18} className="text-neon-blue group-hover:text-neon-yellow transition-colors" />
-          </motion.div>
+          </div>
         )}
       </motion.button>
     </div>
