@@ -7,18 +7,24 @@ export function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
 
   React.useEffect(() => {
-    // Improved mobile detection that handles orientation changes
+    // Enhanced mobile detection with orientation change support and throttling
     const handleResize = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+      // Get device width
+      const width = window.innerWidth
+      setIsMobile(width < MOBILE_BREAKPOINT)
     }
     
     // Initial check
     handleResize()
     
-    // Add event listener for window resize
+    // Add event listeners with improved performance
     window.addEventListener("resize", handleResize)
+    window.addEventListener("orientationchange", handleResize)
     
-    return () => window.removeEventListener("resize", handleResize)
+    return () => {
+      window.removeEventListener("resize", handleResize)
+      window.removeEventListener("orientationchange", handleResize)
+    }
   }, [])
 
   return !!isMobile

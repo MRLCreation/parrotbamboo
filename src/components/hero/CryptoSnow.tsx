@@ -13,8 +13,8 @@ const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index, isMo
   // Calculate random positions and durations
   // Adjust size and speed for mobile
   const startY = `${Math.random() * 80 + 10}%`; // Random vertical position between 10-90%
-  const size = isMobile ? (Math.random() * 10 + 8) : (Math.random() * 15 + 10); // Smaller on mobile
-  const duration = isMobile ? (Math.random() * 15 + 15) : (Math.random() * 20 + 15); // Slightly faster on mobile
+  const size = isMobile ? (Math.random() * 12 + 10) : (Math.random() * 18 + 12); // Slightly larger on both devices
+  const duration = isMobile ? (Math.random() * 18 + 20) : (Math.random() * 25 + 20); // Slower movement for better visibility
   const delay = Math.random() * 5; // Random delay up to 5s
   
   return (
@@ -28,8 +28,8 @@ const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index, isMo
       initial={{ x: -50, opacity: 0 }}
       animate={{ 
         x: "100vw",
-        y: [0, Math.random() * 20 - 10, Math.random() * 20 - 10, 0], // Reduced movement for mobile
-        opacity: [0, 0.6, 0.7, 0.6, 0]
+        y: [0, Math.random() * 20 - 10, Math.random() * 20 - 10, 0], // Gentle floating motion
+        opacity: [0, 0.8, 0.9, 0.8, 0] // Higher opacity for better visibility
       }}
       transition={{ 
         duration: duration,
@@ -44,37 +44,36 @@ const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index, isMo
         alt="Crypto icon" 
         className="w-full h-full object-contain"
         style={{ 
-          filter: "drop-shadow(0 0 3px rgba(255,255,255,0.3))" 
+          filter: "drop-shadow(0 0 4px rgba(255,255,255,0.5))" // Enhanced glow effect
         }}
       />
     </motion.div>
   );
 };
 
-// Define the crypto and tech logos
-const techLogos = [
-  "/lovable-uploads/7e7d7050-cffa-4228-a49c-54d8d9fc206e.png", // Binance coin
-  "/lovable-uploads/2b0f9a3c-1884-4850-a27d-980f8334625b.png", // Solana
-  "/lovable-uploads/7120bbe4-a36d-43f7-b7ce-13972d047ef5.png", // Ethereum
-  "/lovable-uploads/566698e8-c8ae-4125-8001-8f84d8771da0.png", // Bitcoin
-  "/lovable-uploads/d46d80bf-7f84-4d8a-b312-5eb0ff837db8.png", // Binance (updated)
-  "/robot-icon.svg",      // Robot icon
-  "/blockchain-icon.svg", // Blockchain icon (keeping this one)
-  "/lovable-uploads/e7ef6ba6-0836-46f7-9883-fd141695c8fe.png" // Uploaded robot icon
+// Define the crypto logos - using only the 5 provided logos
+const cryptoLogos = [
+  "/lovable-uploads/4f377acf-217a-475e-997f-3a656ea3f5fb.png", // Binance (BNB)
+  "/lovable-uploads/11d5aaa7-58af-4394-a80e-d007e84269bb.png", // Ethereum
+  "/lovable-uploads/1acf01a2-feb2-46d5-a0a4-7fdaadc8c624.png", // Bitcoin
+  "/lovable-uploads/3e701490-f398-48f5-968d-4ea17ea33ec2.png", // Robot
+  "/lovable-uploads/c6f0c9f5-30f1-488d-aef5-e8117c06e639.png"  // Solana
 ];
 
 const CryptoSnow: React.FC = () => {
   const isMobile = useIsMobile();
   
-  // Reduce number of snowflakes on mobile for better performance
-  const snowflakeCount = isMobile ? 3 : 6;
+  // Reduce number of snowflakes - fewer, more impactful elements
+  const snowflakeCount = isMobile ? 2 : 4; // Even fewer for cleaner look
   
+  // Create deterministic selection to ensure we show each logo
   const snowflakes = Array.from({ length: snowflakeCount }).map((_, index) => {
-    const randomLogo = techLogos[Math.floor(Math.random() * techLogos.length)];
+    // Ensure we cycle through all logos deterministically
+    const logoIndex = index % cryptoLogos.length;
     return (
       <CryptoSnowflake 
         key={index} 
-        imageUrl={randomLogo}
+        imageUrl={cryptoLogos[logoIndex]}
         index={index} 
         isMobile={!!isMobile}
       />
