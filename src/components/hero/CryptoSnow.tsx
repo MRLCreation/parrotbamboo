@@ -62,8 +62,8 @@ const techLogos = [
 ];
 
 const CryptoSnow: React.FC = () => {
-  // Create 10 snowflakes with random tech logos
-  const snowflakes = Array.from({ length: 10 }).map((_, index) => {
+  // Reduced from 10 to 6 snowflakes with random tech logos
+  const snowflakes = Array.from({ length: 6 }).map((_, index) => {
     const randomLogo = techLogos[Math.floor(Math.random() * techLogos.length)];
     return (
       <CryptoSnowflake 

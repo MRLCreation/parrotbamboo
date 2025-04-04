@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Globe, Shield, Zap, Code, Sparkles } from 'lucide-react';
@@ -33,17 +32,25 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="section-padding bg-dark-lighter relative overflow-hidden">
-      {/* Background elements */}
+      {/* Enhanced professional background elements */}
       <motion.div 
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-10"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.05 }}
+        animate={{ opacity: 0.1 }}
         transition={{ duration: 1 }}
       >
-        <div className="h-full w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neon-blue/20 to-transparent"></div>
+        {/* Subtle grid pattern for a corporate look */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        
+        {/* Professional radial gradient */}
+        <div className="h-full w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neon-blue/10 to-transparent"></div>
       </motion.div>
       
-      {/* Decorative geometric shapes */}
+      {/* Subtle decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      
+      {/* Professional geometric shapes with reduced intensity */}
       <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-neon-blue/5 blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-neon-purple/5 blur-3xl"></div>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-neon-yellow/5 blur-3xl"></div>
@@ -79,7 +86,6 @@ export default function AboutSection() {
           ></motion.div>
         </div>
 
-        {/* Main content box */}
         <motion.div 
           className="max-w-3xl mx-auto mb-16 relative"
           initial={{ opacity: 0, y: 20 }}
@@ -87,9 +93,9 @@ export default function AboutSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.6 }}
         >
-          <Card className="backdrop-blur-md bg-dark/60 border border-white/10 shadow-xl overflow-hidden">
+          <Card className="backdrop-blur-md bg-dark/80 border border-white/10 shadow-xl overflow-hidden">
             <CardContent className="p-8">
-              <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-gradient-to-br from-neon-blue/30 to-neon-purple/30 blur-xl"></div>
+              <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-gradient-to-br from-neon-blue/20 to-neon-purple/20 blur-xl"></div>
               
               <div className="flex justify-center mb-6">
                 <motion.div
@@ -128,7 +134,6 @@ export default function AboutSection() {
           </Card>
         </motion.div>
 
-        {/* Features grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <motion.div 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Rocket, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -13,7 +12,7 @@ export default function HeroSection() {
       id="home" 
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-dark via-dark-lighter to-dark pt-20 relative overflow-hidden"
     >
-      {/* Animated background elements */}
+      {/* Professional background with subtle patterns and gradients */}
       <motion.div
         className="absolute inset-0 z-0 opacity-30"
         initial={{ opacity: 0 }}
@@ -21,8 +20,9 @@ export default function HeroSection() {
         transition={{ duration: 2 }}
       >
         <div className="absolute w-full h-full">
+          {/* More sophisticated gradients for a professional look */}
           <motion.div 
-            className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-neon-yellow/10 filter blur-3xl"
+            className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-neon-yellow/5 filter blur-3xl"
             animate={{
               scale: [1, 1.2, 1],
               x: [0, 10, 0],
@@ -35,7 +35,7 @@ export default function HeroSection() {
             }}
           />
           <motion.div 
-            className="absolute bottom-1/3 right-1/3 w-72 h-72 rounded-full bg-neon-blue/10 filter blur-3xl"
+            className="absolute bottom-1/3 right-1/3 w-72 h-72 rounded-full bg-neon-blue/5 filter blur-3xl"
             animate={{
               scale: [1.2, 1, 1.2],
               x: [0, -20, 0],
@@ -49,7 +49,7 @@ export default function HeroSection() {
             }}
           />
           <motion.div 
-            className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-neon-purple/10 filter blur-3xl"
+            className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-neon-purple/5 filter blur-3xl"
             animate={{
               scale: [0.8, 1.1, 0.8],
               x: [0, 15, 0],
@@ -64,11 +64,15 @@ export default function HeroSection() {
           />
         </div>
 
-        {/* Digital circuit patterns */}
-        <div className="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat opacity-10"></div>
+        {/* Enhanced digital circuit patterns with lower opacity for subtlety */}
+        <div className="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat opacity-5"></div>
+        
+        {/* Additional professional background elements */}
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-blue/20 to-transparent"></div>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-yellow/20 to-transparent"></div>
       </motion.div>
 
-      {/* Crypto Logo Snow Effect */}
+      {/* Crypto Logo Snow Effect with reduced count */}
       <CryptoSnow />
 
       <div className="container mx-auto px-4 relative z-10">
@@ -186,21 +190,21 @@ export default function HeroSection() {
         </div>
       </div>
       
-      {/* Floating particles */}
+      {/* Floating particles - kept but with reduced opacity */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-white"
+            className="absolute rounded-full bg-white/70"
             style={{
-              width: Math.random() * 6 + 2,
-              height: Math.random() * 6 + 2,
+              width: Math.random() * 4 + 1,
+              height: Math.random() * 4 + 1,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
               y: [0, -100],
-              opacity: [0, 0.7, 0],
+              opacity: [0, 0.5, 0],
             }}
             transition={{
               duration: Math.random() * 10 + 10,
