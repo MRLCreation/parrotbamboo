@@ -7,10 +7,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 
 export default function AMAEventHostingSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
-    <section id="ama-events" className="section-padding relative overflow-hidden bg-dark-lighter">
+    <section id="ama-events" className="section-padding relative overflow-hidden bg-dark-lighter" key={`ama-section-${language}`}>
       {/* Background decorations */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat opacity-20"></div>
@@ -54,11 +54,10 @@ export default function AMAEventHostingSection() {
             {t('amaEventHosting')}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow to-neon-purple">
-            Professional Event Hosting
+            {t('professionalEventHosting')}
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            We specialize in hosting and managing virtual events that increase your project's visibility
-            and engage with your community in meaningful ways.
+            {t('eventVisibilityDescription')}
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto mt-6"></div>
         </motion.div>
@@ -86,17 +85,17 @@ export default function AMAEventHostingSection() {
                   <CardTitle className="text-2xl text-white">{t('binanceLiveEvents')}</CardTitle>
                 </div>
                 <CardDescription className="text-gray-300">
-                  Reach millions of users on the world's largest crypto exchange platform
+                  {t('reachMillionsUsers')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="relative mt-2 mb-8">
                   <div className="bg-gradient-to-r from-[#F0B90B]/20 to-transparent p-6 rounded-lg border border-[#F0B90B]/30">
                     <ul className="space-y-3">
-                      <EventFeature icon={<Users size={18} />} text="Access to Binance's global audience" />
-                      <EventFeature icon={<Calendar size={18} />} text="Scheduled promotional events" />
-                      <EventFeature icon={<Mic size={18} />} text="Professional hosting and moderation" />
-                      <EventFeature icon={<Headphones size={18} />} text="Live Q&A sessions with your team" />
+                      <EventFeature icon={<Users size={18} />} text={t('binanceGlobalAudience')} />
+                      <EventFeature icon={<Calendar size={18} />} text={t('scheduledPromotionalEvents')} />
+                      <EventFeature icon={<Mic size={18} />} text={t('professionalHosting')} />
+                      <EventFeature icon={<Headphones size={18} />} text={t('liveQASessions')} />
                     </ul>
                     
                     <div className="mt-6 flex justify-center">
@@ -149,17 +148,17 @@ export default function AMAEventHostingSection() {
                   <CardTitle className="text-2xl text-white">{t('twitterAudioLive')}</CardTitle>
                 </div>
                 <CardDescription className="text-gray-300">
-                  Connect with your community through Twitter's audio spaces
+                  {t('connectCommunity')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="relative mt-2 mb-8">
                   <div className="bg-gradient-to-r from-gray-800/50 to-transparent p-6 rounded-lg border border-gray-700/30">
                     <ul className="space-y-3">
-                      <EventFeature icon={<Users size={18} />} text="Engage with crypto enthusiasts" />
-                      <EventFeature icon={<Calendar size={18} />} text="Regular Twitter Space events" />
-                      <EventFeature icon={<Mic size={18} />} text="Industry expert discussions" />
-                      <EventFeature icon={<Headphones size={18} />} text="Community-driven Q&A sessions" />
+                      <EventFeature icon={<Users size={18} />} text={t('engageCryptoEnthusiasts')} />
+                      <EventFeature icon={<Calendar size={18} />} text={t('regularTwitterSpaces')} />
+                      <EventFeature icon={<Mic size={18} />} text={t('industryExpertDiscussions')} />
+                      <EventFeature icon={<Headphones size={18} />} text={t('communityQASessions')} />
                     </ul>
                     
                     <div className="mt-6 flex justify-center">
@@ -212,17 +211,17 @@ export default function AMAEventHostingSection() {
                   <CardTitle className="text-2xl text-white">{t('telegramAudioLive')}</CardTitle>
                 </div>
                 <CardDescription className="text-gray-300">
-                  Host engaging audio sessions in Telegram communities
+                  {t('hostEngagingAudio')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="relative mt-2 mb-8">
                   <div className="bg-gradient-to-r from-[#0088cc]/20 to-transparent p-6 rounded-lg border border-[#0088cc]/30">
                     <ul className="space-y-3">
-                      <EventFeature icon={<Users size={18} />} text="Direct access to Telegram communities" />
-                      <EventFeature icon={<Calendar size={18} />} text="Scheduled AMA sessions with enthusiasts" />
-                      <EventFeature icon={<Mic size={18} />} text="Interactive voice discussions" />
-                      <EventFeature icon={<Headphones size={18} />} text="Real-time community engagement" />
+                      <EventFeature icon={<Users size={18} />} text={t('directAccessCommunities')} />
+                      <EventFeature icon={<Calendar size={18} />} text={t('scheduledAMASessions')} />
+                      <EventFeature icon={<Mic size={18} />} text={t('interactiveVoiceDiscussions')} />
+                      <EventFeature icon={<Headphones size={18} />} text={t('realTimeCommunityEngagement')} />
                     </ul>
                     
                     <div className="mt-6 flex justify-center">
@@ -265,18 +264,18 @@ export default function AMAEventHostingSection() {
         >
           <AdditionalService 
             icon={<Mic className="text-neon-yellow" />}
-            title="Panel Discussions"
-            description="Moderated panel discussions with industry experts on blockchain topics."
+            title={t('panelDiscussions')}
+            description={t('panelDescription')}
           />
           <AdditionalService 
             icon={<Users className="text-neon-blue" />}
-            title="Community AMA"
-            description="Direct engagement with your community through Ask Me Anything sessions."
+            title={t('communityAMA')}
+            description={t('communityAMADescription')}
           />
           <AdditionalService 
             icon={<Calendar className="text-neon-purple" />}
-            title="Event Planning"
-            description="Complete event planning from conception to post-event content distribution."
+            title={t('eventPlanning')}
+            description={t('eventPlanningDescription')}
           />
         </motion.div>
 
@@ -289,7 +288,7 @@ export default function AMAEventHostingSection() {
           transition={{ duration: 0.6 }}
         >
           <h3 className="text-xl md:text-2xl font-semibold mb-6 text-white">
-            Ready to boost your project's visibility?
+            {t('boostVisibility')}
           </h3>
           <Button
             className="bg-gradient-to-r from-neon-blue to-neon-purple text-white px-8 py-6 rounded-full hover:shadow-lg hover:shadow-neon-purple/20 transition-all"
@@ -297,7 +296,7 @@ export default function AMAEventHostingSection() {
               document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            Schedule Your Event
+            {t('scheduleEvent')}
           </Button>
         </motion.div>
       </div>

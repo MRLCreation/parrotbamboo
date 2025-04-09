@@ -14,7 +14,7 @@ interface Achievement {
 }
 
 export default function ExperienceSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -25,7 +25,7 @@ export default function ExperienceSection() {
     {
       icon: <Award className="text-neon-blue filter drop-shadow-[0_0_8px_rgba(0,131,202,0.7)]" size={28} />,
       title: t('majorProjects'),
-      description: "Successfully represented and promoted top-tier blockchain ventures",
+      description: t('successfullyRepresented'),
       value: "25+",
       label: t('projects'),
       color: "from-neon-blue to-blue-400"
@@ -33,7 +33,7 @@ export default function ExperienceSection() {
     {
       icon: <CheckCircle className="text-neon-purple filter drop-shadow-[0_0_8px_rgba(139,92,246,0.7)]" size={28} />,
       title: t('xSpaceEvents'),
-      description: "Hosted high-impact discussions with industry leaders",
+      description: t('hostedHighImpact'),
       value: "100+",
       label: t('events'),
       color: "from-neon-purple to-purple-400"
@@ -41,7 +41,7 @@ export default function ExperienceSection() {
     {
       icon: <Calendar className="text-neon-cyan filter drop-shadow-[0_0_8px_rgba(34,211,238,0.7)]" size={28} />,
       title: t('yearsExperience'),
-      description: "Deep expertise in the Web3 and blockchain industry",
+      description: t('deepExpertise'),
       value: "5+",
       label: t('years'),
       color: "from-neon-cyan to-cyan-400"
@@ -70,7 +70,7 @@ export default function ExperienceSection() {
   };
 
   return (
-    <section id="experience" className="py-24 md:py-32 bg-dark relative overflow-hidden" ref={containerRef}>
+    <section id="experience" className="py-24 md:py-32 bg-dark relative overflow-hidden" ref={containerRef} key={`experience-section-${language}`}>
       {/* Enhanced background elements */}
       <motion.div 
         className="absolute inset-0 opacity-10"
@@ -147,7 +147,7 @@ export default function ExperienceSection() {
         >
           {achievements.map((achievement, index) => (
             <motion.div 
-              key={index}
+              key={`achievement-${index}-${language}`}
               className="rounded-xl p-8 text-center backdrop-blur-sm bg-dark-lighter/60 border border-white/10 shadow-lg"
               whileHover={{ 
                 y: -10,
