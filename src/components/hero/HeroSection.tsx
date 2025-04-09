@@ -1,17 +1,19 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
-import HeroBackground from './HeroBackground';
-import CryptoSnow from '../hero/CryptoSnow';
-import HeroTitle from './HeroTitle';
-import HeroActions from './HeroActions';
-import ScrollIndicator from './ScrollIndicator';
-import AlienElements from './AlienElements';
-import ConstellationStars from './ConstellationStars';
-import OrbitalRings from './OrbitalRings';
+// Import components from barrel file for better organization
+import {
+  HeroBackground,
+  CryptoSnow,
+  HeroTitle,
+  HeroActions,
+  ScrollIndicator,
+  AlienElements,
+  ConstellationStars,
+  OrbitalRings
+} from './index';
 
 export default function HeroSection() {
   const isMobile = useIsMobile();
@@ -20,6 +22,7 @@ export default function HeroSection() {
     <section 
       id="home" 
       className={`min-h-screen flex items-center justify-center bg-gradient-to-br from-dark via-dark-lighter to-dark ${isMobile ? 'pt-16' : 'pt-20'} relative overflow-hidden`}
+      aria-label="Hero section"
     >
       {/* Space/Alien background */}
       <HeroBackground isMobile={isMobile} />

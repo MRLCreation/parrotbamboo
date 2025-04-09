@@ -13,6 +13,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isMobile }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 0.3 }}
       transition={{ duration: 2 }}
+      aria-hidden="true"
     >
       <div className="absolute w-full h-full">
         {/* Alien-themed gradients */}
@@ -26,11 +27,12 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isMobile }) => {
           transition={{
             duration: isMobile ? 12 : 15,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
+            repeatType: "reverse",
           }}
         />
         
-        {/* Only show this on desktop */}
+        {/* Only show this on desktop for better performance */}
         {!isMobile && (
           <motion.div 
             className="absolute bottom-1/3 right-1/3 w-72 h-72 rounded-full bg-neon-blue/5 filter blur-3xl"
@@ -43,7 +45,8 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isMobile }) => {
               duration: 18,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 2
+              delay: 2,
+              repeatType: "reverse",
             }}
           />
         )}
@@ -59,7 +62,8 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isMobile }) => {
             duration: isMobile ? 8 : 12,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 1
+            delay: 1,
+            repeatType: "reverse",
           }}
         />
       </div>

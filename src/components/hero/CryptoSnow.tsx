@@ -1,33 +1,36 @@
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface CryptoSnowflakeProps {
   imageUrl: string;
-  index: number;
+  startY: string;
+  size: number;
+  duration: number;
+  delay: number;
   isMobile: boolean;
 }
 
-const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index, isMobile }) => {
-  // Calculate random positions and durations with reduced complexity for mobile
-  const startY = `${Math.random() * 80 + 10}%`; 
-  const size = isMobile ? (Math.random() * 12 + 10) : (Math.random() * 18 + 12);
-  const duration = isMobile ? (Math.random() * 10 + 20) : (Math.random() * 25 + 20); 
-  const delay = Math.random() * 5;
-  
+const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ 
+  imageUrl, 
+  startY, 
+  size, 
+  duration, 
+  delay, 
+  isMobile 
+}) => {
   // Simplified animation for mobile
-  const mobileAnimationProps = {
-    x: "100vw",
-    opacity: [0, 0.8, 0]
-  };
-  
-  // Full animation for desktop
-  const desktopAnimationProps = {
-    x: "100vw",
-    y: [0, Math.random() * 20 - 10, Math.random() * 20 - 10, 0],
-    opacity: [0, 0.8, 0.9, 0.8, 0]
-  };
+  const animationProps = isMobile 
+    ? {
+        x: "100vw",
+        opacity: [0, 0.7, 0]
+      }
+    : {
+        x: "100vw",
+        y: [0, Math.random() * 20 - 10, Math.random() * 20 - 10, 0],
+        opacity: [0, 0.8, 0.9, 0.8, 0]
+      };
   
   return (
     <motion.div
@@ -38,13 +41,12 @@ const CryptoSnowflake: React.FC<CryptoSnowflakeProps> = ({ imageUrl, index, isMo
         height: size,
       }}
       initial={{ x: -50, opacity: 0 }}
-      animate={isMobile ? mobileAnimationProps : desktopAnimationProps}
+      animate={animationProps}
       transition={{ 
         duration: duration,
         repeat: Infinity,
         delay: delay,
         ease: "linear",
-        // Simpler timing for mobile
         times: isMobile ? [0, 0.5, 1] : [0, 0.2, 0.5, 0.8, 1]
       }}
     >
@@ -72,21 +74,32 @@ const cryptoLogos = [
 const CryptoSnow: React.FC = () => {
   const isMobile = useIsMobile();
   
-  // Further reduced for mobile, just show 1 for better performance
-  const snowflakeCount = isMobile ? 1 : 4;
-  
-  // Create snowflakes
-  const snowflakes = Array.from({ length: snowflakeCount }).map((_, index) => {
-    const logoIndex = index % cryptoLogos.length;
-    return (
-      <CryptoSnowflake 
-        key={index} 
-        imageUrl={cryptoLogos[logoIndex]}
-        index={index} 
-        isMobile={!!isMobile}
-      />
-    );
-  });
+  // Use useMemo to prevent recreating snowflakes on each render
+  const snowflakes = useMemo(() => {
+    // Further reduced for mobile, just show 1 for better performance
+    const snowflakeCount = isMobile ? 1 : 4;
+    
+    return Array.from({ length: snowflakeCount }).map((_, index) => {
+      const logoIndex = index % cryptoLogos.length;
+      // Pre-calculate random values to avoid recalculation on re-render
+      const startY = `${Math.random() * 80 + 10}%`;
+      const size = isMobile ? (Math.random() * 12 + 10) : (Math.random() * 18 + 12);
+      const duration = isMobile ? (Math.random() * 10 + 20) : (Math.random() * 25 + 20);
+      const delay = Math.random() * 5;
+      
+      return (
+        <CryptoSnowflake 
+          key={`crypto-snowflake-${index}`}
+          imageUrl={cryptoLogos[logoIndex]}
+          startY={startY}
+          size={size}
+          duration={duration}
+          delay={delay}
+          isMobile={isMobile}
+        />
+      );
+    });
+  }, [isMobile]); // Only re-create when mobile status changes
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
