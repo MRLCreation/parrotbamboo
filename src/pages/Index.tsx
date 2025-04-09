@@ -1,6 +1,7 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
-import HeroSection from '../components/HeroSection';
+import { HeroSection } from '../components/hero';
 import AboutSection from '../components/AboutSection';
 import MissionSection from '../components/MissionSection';
 import TeamSection from '../components/TeamSection';
