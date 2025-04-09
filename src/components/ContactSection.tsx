@@ -239,40 +239,7 @@ export default function ContactSection() {
               </CardContent>
             </Card>
             
-            {/* Social Media */}
-            <div className="bg-dark-lighter/50 backdrop-blur-lg border border-white/10 shadow-xl rounded-xl p-6">
-              <h4 className="text-xl font-medium text-white mb-5">{t('followUs')}</h4>
-              <div className="grid grid-cols-4 gap-4">
-                {/* LinkedIn */}
-                <a 
-                  href="#" 
-                  className="aspect-square rounded-xl glassmorphism flex items-center justify-center hover:bg-neon-blue/10 transition-all group"
-                >
-                  <Linkedin size={24} className="text-gray-400 group-hover:text-neon-blue transition-colors" />
-                </a>
-                
-                {/* Twitter */}
-                <a 
-                  href="#" 
-                  className="aspect-square rounded-xl glassmorphism flex items-center justify-center hover:bg-neon-purple/10 transition-all group"
-                >
-                  <Twitter size={24} className="text-gray-400 group-hover:text-neon-purple transition-colors" />
-                </a>
-                
-                {/* Message Square */}
-                <a 
-                  href="#" 
-                  className="aspect-square rounded-xl glassmorphism flex items-center justify-center hover:bg-neon-yellow/10 transition-all group"
-                >
-                  <MessageSquare size={24} className="text-gray-400 group-hover:text-neon-yellow transition-colors" />
-                </a>
-                
-                {/* Empty space for future social networks */}
-                <div className="aspect-square rounded-xl border border-dashed border-gray-700/50 flex items-center justify-center text-gray-700">
-                  <span className="text-2xl">+</span>
-                </div>
-              </div>
-            </div>
+            {/* Removed the "Follow Us" section as requested by the user */}
           </div>
         </div>
         
