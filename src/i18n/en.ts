@@ -20,6 +20,16 @@ export const en = {
   companyName: 'ParrotBamboo Web3 Agency',
   companyFocus: 'Web3, Blockchain & AI, Marketing',
   
+  // Features in About section
+  webThreeExperts: 'Web3 Experts',
+  webThreeExpertsDesc: 'Deep expertise in blockchain technology, NFTs, and decentralized applications.',
+  innovativeStrategies: 'Innovative Strategies',
+  innovativeStrategiesDesc: 'Cutting-edge marketing approaches tailored for the crypto and blockchain space.',
+  technicalExcellence: 'Technical Excellence',
+  technicalExcellenceDesc: 'Strong technical background ensuring quality implementation of Web3 projects.',
+  trustedPartners: 'Trusted Partners',
+  trustedPartnersDesc: 'Reliable collaborators with established partnerships in the blockchain ecosystem.',
+  
   // Services section
   servicesTitle: 'Our Services',
   marketingService: 'Marketing Strategy',

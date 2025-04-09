@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Globe, Shield, Zap, Code, Sparkles } from 'lucide-react';
@@ -10,23 +11,23 @@ export default function AboutSection() {
   const features = [
     {
       icon: <Globe className="w-7 h-7 text-neon-blue" />,
-      title: "Web3 Experts",
-      description: "Deep expertise in blockchain technology, NFTs, and decentralized applications."
+      title: t('webThreeExperts'),
+      description: t('webThreeExpertsDesc')
     },
     {
       icon: <Zap className="w-7 h-7 text-neon-purple" />,
-      title: "Innovative Strategies",
-      description: "Cutting-edge marketing approaches tailored for the crypto and blockchain space."
+      title: t('innovativeStrategies'),
+      description: t('innovativeStrategiesDesc')
     },
     {
       icon: <Code className="w-7 h-7 text-neon-cyan" />,
-      title: "Technical Excellence",
-      description: "Strong technical background ensuring quality implementation of Web3 projects."
+      title: t('technicalExcellence'),
+      description: t('technicalExcellenceDesc')
     },
     {
       icon: <Shield className="w-7 h-7 text-blue-400" />,
-      title: "Trusted Partners",
-      description: "Reliable collaborators with established partnerships in the blockchain ecosystem."
+      title: t('trustedPartners'),
+      description: t('trustedPartnersDesc')
     }
   ];
 
@@ -120,7 +121,7 @@ export default function AboutSection() {
               </div>
               
               <p className="text-xl text-gray-300 leading-relaxed relative z-10">
-                <span className="text-white font-semibold">ParrotBamboo</span> is a dynamic Web3 agency at the forefront of blockchain innovation. We combine technical expertise with creative marketing strategies to help crypto and blockchain ventures thrive in this rapidly evolving digital landscape.
+                <span className="text-white font-semibold">ParrotBamboo</span> {t('aboutDescription')}
               </p>
               
               <motion.div 

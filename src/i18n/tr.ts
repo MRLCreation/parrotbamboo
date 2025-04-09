@@ -20,6 +20,16 @@ export const tr = {
   companyName: 'ParrotBamboo Web3 Ajansı',
   companyFocus: 'Web3, Blokzincir ve AI, Pazarlama',
   
+  // Features in About section
+  webThreeExperts: 'Web3 Uzmanları',
+  webThreeExpertsDesc: 'Blokzincir teknolojisi, NFT\'ler ve merkezi olmayan uygulamalarda derin uzmanlık.',
+  innovativeStrategies: 'Yenilikçi Stratejiler',
+  innovativeStrategiesDesc: 'Kripto ve blokzincir alanı için özel tasarlanmış son teknoloji pazarlama yaklaşımları.',
+  technicalExcellence: 'Teknik Mükemmellik',
+  technicalExcellenceDesc: 'Web3 projelerinin kaliteli uygulanmasını sağlayan güçlü teknik altyapı.',
+  trustedPartners: 'Güvenilir Ortaklar',
+  trustedPartnersDesc: 'Blokzincir ekosisteminde yerleşik ortaklıklara sahip güvenilir iş ortakları.',
+  
   // Services section
   servicesTitle: 'Hizmetlerimiz',
   marketingService: 'Pazarlama Stratejisi',
