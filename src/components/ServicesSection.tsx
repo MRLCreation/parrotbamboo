@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { BarChart3, MessageSquare, Building, Users, FileText, Paintbrush } from 'lucide-react';
@@ -343,6 +344,7 @@ export default function ServicesSection() {
       }
     };
 
+    // Get service from URL if available
     const params = new URLSearchParams(location.search);
     const serviceParam = params.get('service');
     if (serviceParam) {
