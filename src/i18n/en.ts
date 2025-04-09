@@ -102,18 +102,6 @@ export const en = {
   contentCreation: 'Content Creation',
   creativeServices: 'Creative Services',
   
-  // Services specific content
-  whatWeOffer: 'What We Offer',
-  
-  // Social Media Growth specific content
-  socialMediaManagement: 'Social Media Growth & Management',
-  socialMediaDescription: 'Strategic growth and engagement across leading platforms in the Web3 space.',
-  twitterCommunityBuilding: 'Twitter (X) community building and engagement',
-  telegramGroupManagement: 'Telegram group management and moderation',
-  youtubeChannelOptimization: 'YouTube channel optimization and content strategy',
-  binanceSquarePresence: 'Binance Square presence establishment',
-  comprehensiveSocialMedia: 'Comprehensive social media analytics and reporting',
-  
   // AMA & Event Hosting
   binanceLiveEvents: 'Binance Live Events',
   twitterAudioLive: 'Twitter Audio Live',
@@ -152,22 +140,6 @@ export const en = {
   boostVisibility: "Ready to boost your project's visibility?",
   scheduleEvent: "Schedule Your Event",
   
-  // Specific content for social platforms
-  reachMillionsUsers: "Reach millions of users on the world's largest crypto exchange platform",
-  connectCommunity: "Connect with your community through Twitter's audio spaces",
-  hostEngagingAudio: "Host engaging audio sessions in Telegram communities",
-  directAccessCommunities: "Direct access to Telegram communities",
-  scheduledAMASessions: "Scheduled AMA sessions with enthusiasts",
-  interactiveVoiceDiscussions: "Interactive voice discussions",
-  realTimeCommunityEngagement: "Real-time community engagement",
-  
-  // Experience section specific
-  successfullyRepresented: "Successfully represented and promoted top-tier blockchain ventures",
-  hostedHighImpact: "Hosted high-impact discussions with industry leaders",
-  deepExpertise: "Deep expertise in the Web3 and blockchain industry",
-  bigProjects: "Big Projects",
-  experienceYears: "Experience Years",
-  
   // Creative Services
   graphicsDesign: "Graphics Design",
   videoEditing: "Video Editing",
@@ -178,10 +150,6 @@ export const en = {
   // Mission Section
   ourMission: "Our Mission",
   drivingWeb3: "Driving Web3 Innovation Forward",
-  
-  // Global Web3 Presence
-  globalWeb3Presence: "Global Web3 Presence",
-  teamWorksRemotely: "Our team works remotely across multiple time zones to provide you with round-the-clock Web3 innovation and support.",
   
   // Section heading colors
   sectionColors: {

@@ -102,18 +102,6 @@ export const tr = {
   contentCreation: 'İçerik Oluşturma',
   creativeServices: 'Kreatif Hizmetler',
   
-  // Services specific content
-  whatWeOffer: 'Sunduğumuz Hizmetler',
-  
-  // Social Media Growth specific content
-  socialMediaManagement: 'Sosyal Medya Büyümesi & Yönetimi',
-  socialMediaDescription: 'Web3 alanında önde gelen platformlarda stratejik büyüme ve etkileşim.',
-  twitterCommunityBuilding: 'Twitter (X) topluluk oluşturma ve etkileşim',
-  telegramGroupManagement: 'Telegram grup yönetimi ve moderasyonu',
-  youtubeChannelOptimization: 'YouTube kanal optimizasyonu ve içerik stratejisi',
-  binanceSquarePresence: 'Binance Square varlığı oluşturma',
-  comprehensiveSocialMedia: 'Kapsamlı sosyal medya analitiği ve raporlama',
-  
   // AMA & Event Hosting
   binanceLiveEvents: 'Binance Live Etkinlikleri',
   twitterAudioLive: 'Twitter Sesli Yayınlar',
@@ -152,22 +140,6 @@ export const tr = {
   boostVisibility: "Projenizin görünürlüğünü artırmaya hazır mısınız?",
   scheduleEvent: "Etkinliğinizi Planlayın",
   
-  // Specific content for social platforms
-  reachMillionsUsers: "Dünyanın en büyük kripto borsası platformunda milyonlarca kullanıcıya ulaşın",
-  connectCommunity: "Twitter'ın sesli alanları aracılığıyla topluluğunuzla bağlantı kurun",
-  hostEngagingAudio: "Telegram topluluklarında ilgi çekici sesli oturumlar düzenleyin",
-  directAccessCommunities: "Telegram topluluklarına doğrudan erişim",
-  scheduledAMASessions: "Meraklılarla planlı AMA oturumları",
-  interactiveVoiceDiscussions: "İnteraktif sesli tartışmalar",
-  realTimeCommunityEngagement: "Gerçek zamanlı topluluk etkileşimi",
-  
-  // Experience section specific
-  successfullyRepresented: "Başarıyla temsil edilmiş ve tanıtılmış üst düzey blokzincir girişimleri",
-  hostedHighImpact: "Sektör liderleriyle yüksek etkili tartışmalar düzenlendi",
-  deepExpertise: "Web3 ve blokzincir sektöründe derin uzmanlık",
-  bigProjects: "Büyük Projeler",
-  experienceYears: "Deneyim Yılları",
-  
   // Creative Services
   graphicsDesign: "Grafik Tasarım",
   videoEditing: "Video Düzenleme",
@@ -178,10 +150,6 @@ export const tr = {
   // Mission Section
   ourMission: "Misyonumuz",
   drivingWeb3: "Web3 İnovasyonunu İleriye Taşıyoruz",
-  
-  // Global Web3 Presence
-  globalWeb3Presence: "Küresel Web3 Varlığı",
-  teamWorksRemotely: "Ekibimiz, size 7/24 Web3 inovasyonu ve desteği sağlamak için farklı zaman dilimlerinde uzaktan çalışır.",
   
   // Section heading colors
   sectionColors: {

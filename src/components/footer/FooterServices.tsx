@@ -18,26 +18,13 @@ export default function FooterServices() {
   const { t } = useLanguage();
   
   const services = [
-    { name: t('socialMediaGrowth'), href: '#services', id: 'socialMedia' },
-    { name: t('amaEventHosting'), href: '#services', id: 'ama' },
-    { name: t('corporatePartnerships'), href: '#services', id: 'partnerships' },
-    { name: t('brandPromotion'), href: '#services', id: 'promotion' },
-    { name: t('contentCreation'), href: '#services', id: 'content' },
-    { name: t('creativeServices'), href: '#services', id: 'creative' }
+    { name: t('socialMediaGrowth'), href: '#services' },
+    { name: t('amaEventHosting'), href: '#services' },
+    { name: t('corporatePartnerships'), href: '#services' },
+    { name: t('brandPromotion'), href: '#services' },
+    { name: t('contentCreation'), href: '#services' },
+    { name: t('creativeServices'), href: '#services' }
   ];
-  
-  const handleServiceClick = (serviceId: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
-    
-    // Set the active service after scrolling
-    setTimeout(() => {
-      const serviceEvent = new CustomEvent('setActiveService', { 
-        detail: { serviceId } 
-      });
-      window.dispatchEvent(serviceEvent);
-    }, 100);
-  };
   
   return (
     <motion.div
@@ -56,7 +43,6 @@ export default function FooterServices() {
             <a 
               href={service.href} 
               className="text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-neon-blue after:left-0 after:-bottom-1 after:transition-all hover:after:w-full"
-              onClick={(e) => handleServiceClick(service.id, e)}
             >
               {service.name}
             </a>
