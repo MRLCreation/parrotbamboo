@@ -1,8 +1,8 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { BarChart3, MessageSquare, Building, Users, FileText, Paintbrush } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
+import { useLocation } from 'react-router-dom';
 
 interface ServiceItemProps {
   icon: React.ReactNode;
@@ -334,6 +334,27 @@ const ServiceContent = ({ activeService }: ServiceContentProps) => {
 export default function ServicesSection() {
   const [activeService, setActiveService] = useState('socialMedia');
   const { t, language } = useLanguage();
+  const location = useLocation();
+  
+  useEffect(() => {
+    const handleActiveServiceChange = (event: CustomEvent) => {
+      if (event.detail && event.detail.serviceId) {
+        setActiveService(event.detail.serviceId);
+      }
+    };
+
+    const params = new URLSearchParams(location.search);
+    const serviceParam = params.get('service');
+    if (serviceParam) {
+      setActiveService(serviceParam);
+    }
+
+    window.addEventListener('setActiveService', handleActiveServiceChange as EventListener);
+    
+    return () => {
+      window.removeEventListener('setActiveService', handleActiveServiceChange as EventListener);
+    };
+  }, [location]);
   
   const services = [
     { 
@@ -370,12 +391,10 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="py-20 md:py-32 bg-dark relative overflow-hidden" key={`services-section-${language}`}>
-      {/* Background effects */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-neon-blue/10 via-transparent to-transparent"></div>
       <div className="absolute w-96 h-96 rounded-full bg-neon-purple/5 blur-3xl -bottom-48 left-1/4"></div>
       
-      {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <motion.span 
@@ -389,7 +408,7 @@ export default function ServicesSection() {
           </motion.span>
           
           <motion.h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-neon-blue"
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -408,7 +427,6 @@ export default function ServicesSection() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          {/* Service navigation */}
           <div className="md:col-span-4 bg-dark/60 backdrop-blur-sm rounded-xl p-6 border border-white/5 shadow-xl">
             {services.map((service) => (
               <ServiceItem 
@@ -421,7 +439,6 @@ export default function ServicesSection() {
             ))}
           </div>
           
-          {/* Service content */}
           <div className="md:col-span-8 bg-dark/60 backdrop-blur-sm rounded-xl p-8 border border-white/5 shadow-xl">
             <ServiceContent activeService={activeService} />
           </div>
