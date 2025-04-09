@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, Rocket, Sparkles } from 'lucide-react';
+import { ArrowRight, Rocket, Sparkles, Moon, Star, Satellite, Orbit } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
 import CryptoSnow from './hero/CryptoSnow';
@@ -13,7 +13,7 @@ export default function HeroSection() {
       id="home" 
       className={`min-h-screen flex items-center justify-center bg-gradient-to-br from-dark via-dark-lighter to-dark ${isMobile ? 'pt-16' : 'pt-20'} relative overflow-hidden`}
     >
-      {/* Professional background with subtle patterns and gradients - optimized for mobile */}
+      {/* Space/Alien background with subtle patterns and gradients - optimized for mobile */}
       <motion.div
         className="absolute inset-0 z-0 opacity-30"
         initial={{ opacity: 0 }}
@@ -21,7 +21,7 @@ export default function HeroSection() {
         transition={{ duration: 2 }}
       >
         <div className="absolute w-full h-full">
-          {/* More sophisticated gradients for a professional look - fewer on mobile */}
+          {/* More sophisticated alien-themed gradients - fewer on mobile */}
           <motion.div 
             className={`absolute top-1/4 left-1/4 rounded-full bg-neon-yellow/5 filter blur-3xl ${isMobile ? 'w-48 h-48' : 'w-96 h-96'}`}
             animate={{
@@ -70,16 +70,68 @@ export default function HeroSection() {
           />
         </div>
 
-        {/* Enhanced digital circuit patterns with lower opacity for subtlety */}
+        {/* Digital circuit patterns with lower opacity for subtlety - alien tech inspired */}
         <div className="absolute inset-0 bg-[url('/circuit-pattern.svg')] bg-repeat opacity-5"></div>
         
-        {/* Additional professional background elements */}
+        {/* Alien tech grid lines */}
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-blue/20 to-transparent"></div>
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-neon-yellow/20 to-transparent"></div>
       </motion.div>
 
       {/* Crypto Logo Snow Effect with reduced count */}
       <CryptoSnow />
+
+      {/* Constellation stars in background - alien sky */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(isMobile ? 15 : 30)].map((_, i) => (
+          <motion.div
+            key={`star-${i}`}
+            className="absolute"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.7 + 0.3,
+            }}
+            animate={{
+              scale: [1, (Math.random() * 0.5) + 1.2, 1],
+              opacity: [0.4, 0.7, 0.4],
+            }}
+            transition={{
+              duration: Math.random() * 3 + 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 2,
+            }}
+          >
+            <Star 
+              size={Math.random() * 3 + 1} 
+              className="text-white"
+              fill="white"
+            />
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Alien tech orbital rings */}
+      {!isMobile && (
+        <>
+          <motion.div 
+            className="absolute h-[800px] w-[800px] rounded-full border border-neon-yellow/10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.div 
+            className="absolute h-[600px] w-[600px] rounded-full border border-neon-blue/10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            animate={{ rotate: -360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.div 
+            className="absolute h-[400px] w-[400px] rounded-full border border-neon-purple/10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          />
+        </>
+      )}
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -111,14 +163,15 @@ export default function HeroSection() {
                 </motion.span>
                 <motion.div
                   className="ml-4 relative top-1"
-                  initial={{ scale: 0.8 }}
+                  initial={{ scale: 0.8, rotate: 0 }}
                   animate={{ 
                     scale: [0.8, 1.2, 0.8],
-                    opacity: [0.8, 1, 0.8]
+                    opacity: [0.8, 1, 0.8],
+                    rotate: [0, 15, 0, -15, 0]
                   }}
                   transition={{ 
                     repeat: Infinity,
-                    duration: 3,
+                    duration: 5,
                     ease: "easeInOut"
                   }}
                 >
@@ -131,7 +184,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
               >
-                the Digital Landscape
+                the Galactic Landscape
               </motion.span>
             </h1>
             
@@ -141,7 +194,7 @@ export default function HeroSection() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.5 }}
             >
-              A premier Web3 agency driving innovation in blockchain, crypto, and decentralized technologies.
+              A premier interstellar agency driving innovation in blockchain, crypto, and decentralized technologies.
             </motion.p>
             
             <motion.div 
@@ -195,29 +248,31 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
-      
-      {/* Floating particles - reduced for mobile */}
+
+      {/* Alien spacecraft elements - subtle floating particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(isMobile ? 5 : 10)].map((_, i) => (
+        {[...Array(isMobile ? 3 : 7)].map((_, i) => (
           <motion.div
-            key={i}
-            className="absolute rounded-full bg-white/70"
+            key={`ufo-${i}`}
+            className="absolute"
             style={{
-              width: Math.random() * 4 + 1,
-              height: Math.random() * 4 + 1,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
               y: [0, -100],
-              opacity: [0, 0.5, 0],
+              x: [0, Math.random() * 50 - 25],
+              opacity: [0, 0.7, 0],
+              rotate: Math.random() * 360,
             }}
             transition={{
-              duration: Math.random() * 10 + 10,
+              duration: Math.random() * 15 + 15,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: Math.random() * 10,
             }}
-          />
+          >
+            <div className="w-4 h-1 bg-neon-yellow/30 rounded-full blur-sm"></div>
+          </motion.div>
         ))}
       </div>
       
@@ -246,7 +301,7 @@ export default function HeroSection() {
               transition={{ repeat: Infinity, duration: 1.5 }}
             ></motion.div>
           </motion.div>
-          <span className="mt-2 text-sm text-gray-400">Scroll</span>
+          <span className="mt-2 text-sm text-gray-400">Explore</span>
         </motion.div>
       )}
     </section>
