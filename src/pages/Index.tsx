@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
@@ -8,7 +7,7 @@ import TeamSection from '../components/TeamSection';
 import ServicesSection from '../components/ServicesSection';
 import PartnersSection from '../components/PartnersSection';
 import ExperienceSection from '../components/ExperienceSection';
-import ContactSection from '../components/ContactSection';
+import { ContactSection } from '../components/contact';
 import Footer from '../components/Footer';
 import AMAEventHostingSection from '../components/AMAEventHostingSection';
 import { useLanguage } from '../hooks/useLanguage';
