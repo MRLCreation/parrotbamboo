@@ -48,7 +48,11 @@ const HeroTitle: React.FC<HeroTitleProps> = ({ isMobile }) => {
               ease: "easeInOut"
             }}
           >
-            <Rocket size={isMobile ? 30 : 40} className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" strokeWidth={1.5} />
+            <Rocket 
+              size={isMobile ? 30 : 40} 
+              className="text-neon-yellow filter drop-shadow-[0_0_8px_rgba(242,183,5,0.7)]" 
+              strokeWidth={1.5} 
+            />
           </motion.div>
         </motion.div>
         <motion.span 
