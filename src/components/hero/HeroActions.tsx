@@ -2,18 +2,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '@/hooks/useLanguage';
 
 interface HeroActionsProps {
   isMobile: boolean;
 }
 
 const HeroActions: React.FC<HeroActionsProps> = ({ isMobile }) => {
+  const { t, language } = useLanguage();
+  
   return (
     <motion.div 
       className="flex flex-col sm:flex-row justify-center items-center gap-4"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.9, duration: 0.5 }}
+      key={`hero-actions-${language}`}
     >
       <motion.a 
         href="#services" 
@@ -25,7 +29,7 @@ const HeroActions: React.FC<HeroActionsProps> = ({ isMobile }) => {
         whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(242, 183, 5, 0.5)" }}
         whileTap={{ scale: 0.95 }}
       >
-        <span>Our Services</span> 
+        <span>{t('servicesTitle')}</span> 
         <motion.div
           animate={{ 
             x: [0, 5, 0],
@@ -54,7 +58,7 @@ const HeroActions: React.FC<HeroActionsProps> = ({ isMobile }) => {
         }}
         whileTap={{ scale: 0.95 }}
       >
-        Contact Us
+        {t('contactTitle')}
       </motion.a>
     </motion.div>
   );

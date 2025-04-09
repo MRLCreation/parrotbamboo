@@ -1,3 +1,4 @@
+
 export const tr = {
   // Navigation items
   home: 'Ana Sayfa',
@@ -7,8 +8,8 @@ export const tr = {
   contact: 'İletişim',
   
   // Hero section
-  heroTitle: 'Web3 İnovasyonunu İleriye Taşıyoruz',
-  heroSubtitle: 'Blokzincir projelerini ana akım benimsemeye yönlendiriyoruz',
+  heroTitle: 'Devrim Yaratıyoruz',
+  heroSubtitle: 'Galaktik Manzarada',
   getStarted: 'Başlayın',
   learnMore: 'Daha Fazla Bilgi',
   
@@ -39,7 +40,7 @@ export const tr = {
   
   // Footer
   footerRights: 'Tüm hakları saklıdır',
-  footerDescription: 'Blokzincir, kripto ve merkezi olmayan teknolojilerde inovasyonu ileriye taşıyan önde gelen bir Web3 ajansı.',
+  footerDescription: 'Blokzincir, kripto ve merkezi olmayan teknolojilerde inovasyonu ileriye taşıyan önde gelen bir yıldızlararası ajans.',
 
   // About Section
   aboutUs: 'Hakkımızda',

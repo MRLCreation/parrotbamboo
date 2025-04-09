@@ -1,3 +1,4 @@
+
 export const en = {
   // Navigation items
   home: 'Home',
@@ -7,8 +8,8 @@ export const en = {
   contact: 'Contact',
   
   // Hero section
-  heroTitle: 'Web3 Innovation Forward',
-  heroSubtitle: 'Driving blockchain projects to mainstream adoption',
+  heroTitle: 'Revolutionizing',
+  heroSubtitle: 'the Galactic Landscape',
   getStarted: 'Get Started',
   learnMore: 'Learn More',
   
@@ -39,7 +40,7 @@ export const en = {
   
   // Footer
   footerRights: 'All rights reserved',
-  footerDescription: 'A premier Web3 agency driving innovation in blockchain, crypto, and decentralized technologies.',
+  footerDescription: 'A premier interstellar agency driving innovation in blockchain, crypto, and decentralized technologies.',
   
   // About Section
   aboutUs: 'About Us',

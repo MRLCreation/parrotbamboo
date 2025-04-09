@@ -2,14 +2,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Rocket } from 'lucide-react';
+import { useLanguage } from '@/hooks/useLanguage';
 
 interface HeroTitleProps {
   isMobile: boolean;
 }
 
 const HeroTitle: React.FC<HeroTitleProps> = ({ isMobile }) => {
+  const { t, language } = useLanguage();
+  
   return (
-    <div>
+    <div key={`hero-title-${language}`}>
       <h1 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-6xl lg:text-7xl'} font-bold mb-6`}>
         <motion.div
           className="flex items-center justify-center mb-2"
@@ -29,7 +32,7 @@ const HeroTitle: React.FC<HeroTitleProps> = ({ isMobile }) => {
             }}
             style={{ backgroundSize: '200% 200%' }}
           >
-            Revolutionizing
+            {t('heroTitle')}
           </motion.span>
           <motion.div
             className="ml-4 relative top-1"
@@ -54,7 +57,7 @@ const HeroTitle: React.FC<HeroTitleProps> = ({ isMobile }) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          the Galactic Landscape
+          {t('heroSubtitle')}
         </motion.span>
       </h1>
       
@@ -64,7 +67,7 @@ const HeroTitle: React.FC<HeroTitleProps> = ({ isMobile }) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.5 }}
       >
-        A premier interstellar agency driving innovation in blockchain, crypto, and decentralized technologies.
+        {t('footerDescription')}
       </motion.p>
     </div>
   );
