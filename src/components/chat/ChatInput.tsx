@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { SendIcon, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 type ChatInputProps = {
   onSendMessage: (message: string) => void;
@@ -90,4 +91,3 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading = false 
 };
 
 export default ChatInput;
-
