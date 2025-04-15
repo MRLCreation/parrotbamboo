@@ -27,15 +27,19 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
       )}>
         {/* Avatar */}
         <div className={cn(
-          "h-9 w-9 rounded-full flex-shrink-0 flex items-center justify-center",
+          "h-9 w-9 rounded-full flex-shrink-0 flex items-center justify-center relative",
+          "backdrop-blur-md bg-white/10 border border-white/20 shadow-lg",
           isUser 
-            ? "bg-gradient-to-br from-neon-yellow to-neon-yellow/40 shadow-md shadow-neon-yellow/20" 
-            : "bg-gradient-to-br from-neon-blue to-neon-purple/40 shadow-md shadow-neon-blue/20"
+            ? "bg-gradient-to-br from-primary/30 to-primary/10" 
+            : "bg-gradient-to-br from-secondary/30 to-secondary/10"
         )}>
+          {/* Glassy overlay effect */}
+          <div className="absolute inset-0 rounded-full opacity-20 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-sm"></div>
+          
           {isUser ? (
-            <User className="h-5 w-5 text-primary-foreground" />
+            <User className="h-5 w-5 text-primary-foreground z-10 relative" />
           ) : (
-            <div className="relative">
+            <div className="relative z-10">
               <Bot className="h-5 w-5 text-primary-foreground" />
               <Sparkles className="h-3 w-3 text-white absolute -top-1 -right-1 animate-pulse" />
             </div>
