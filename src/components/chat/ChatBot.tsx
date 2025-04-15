@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
-import { Bot } from 'lucide-react';
+import { Bot, X } from 'lucide-react';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -13,7 +13,11 @@ type Message = {
   timestamp: string;
 };
 
-const ChatBot: React.FC = () => {
+interface ChatBotProps {
+  onClose?: () => void;
+}
+
+const ChatBot: React.FC<ChatBotProps> = ({ onClose }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -79,11 +83,22 @@ const ChatBot: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full bg-background border-r border-border">
-      <div className="p-4 border-b flex items-center gap-2">
-        <Bot className="h-5 w-5 text-primary" />
-        <h2 className="text-lg font-semibold">
-          {t('aiChatTitle') || "ParrotBamboo AI"}
-        </h2>
+      <div className="p-4 border-b flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Bot className="h-5 w-5 text-primary" />
+          <h2 className="text-lg font-semibold">
+            {t('aiChatTitle') || "ParrotBamboo AI"}
+          </h2>
+        </div>
+        {onClose && (
+          <button 
+            onClick={onClose}
+            className="p-1 rounded-full hover:bg-muted transition-colors"
+            aria-label="Close chat"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        )}
       </div>
 
       <div 
