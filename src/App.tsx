@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ChatBot from "./components/chat/ChatBot";
 import { MessageCircle, X } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const App = () => {
   const [queryClient] = useState(() => new QueryClient());
@@ -23,11 +24,6 @@ const App = () => {
             <Toaster />
             <Sonner />
             <div className="flex h-screen">
-              {/* AI Chat Bot - toggle with button */}
-              <div className={`md:w-80 w-full ${chatOpen ? "flex" : "hidden"} md:flex flex-col h-full z-10 fixed md:relative ${chatOpen ? "right-0" : "right-full"} top-0 transition-all duration-300`}>
-                <ChatBot onClose={() => setChatOpen(false)} />
-              </div>
-              
               {/* Main Content */}
               <div className="flex-1 overflow-y-auto">
                 <BrowserRouter>
@@ -40,9 +36,19 @@ const App = () => {
               </div>
             </div>
             
+            {/* Chat Sheet - Using Sheet component for better animations */}
+            <Sheet open={chatOpen} onOpenChange={setChatOpen}>
+              <SheetContent 
+                side="right" 
+                className="w-full sm:max-w-md md:w-[400px] p-0 border-l border-border/50 shadow-xl"
+              >
+                <ChatBot onClose={() => setChatOpen(false)} />
+              </SheetContent>
+            </Sheet>
+            
             {/* Message Button - Always visible at bottom right */}
             <button 
-              className="fixed bottom-4 right-4 z-20 bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-200"
+              className="fixed bottom-6 right-6 z-20 bg-primary hover:bg-primary/90 text-primary-foreground p-4 rounded-full shadow-lg hover:shadow-primary/20 hover:scale-110 transition-all duration-300 animate-pulse-glow"
               onClick={() => setChatOpen(!chatOpen)}
               aria-label={chatOpen ? "Close chat" : "Open chat"}
             >

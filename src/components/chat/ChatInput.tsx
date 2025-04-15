@@ -22,28 +22,32 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading = false 
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center gap-2 mt-2">
-      <textarea
-        className="flex-1 h-10 min-h-10 max-h-24 px-3 py-2 text-sm rounded-md border border-input bg-background resize-none"
-        placeholder={t('chatPlaceholder') || "Ask me anything..."}
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            handleSubmit(e);
-          }
-        }}
-        disabled={isLoading}
-      />
-      <Button 
-        type="submit" 
-        size="icon" 
-        disabled={!message.trim() || isLoading}
-        className="h-10 w-10 rounded-full"
-      >
-        <SendIcon className="h-4 w-4" />
-      </Button>
+    <form onSubmit={handleSubmit} className="flex items-center gap-2">
+      <div className="relative w-full">
+        <textarea
+          className="w-full min-h-[44px] max-h-32 px-4 py-3 pr-12 text-sm rounded-xl border border-border/50 bg-background/50 focus:border-primary/50 focus:ring-1 focus:ring-primary/30 focus-visible:outline-none resize-none"
+          placeholder={t('chatPlaceholder') || "Ask me anything..."}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              handleSubmit(e);
+            }
+          }}
+          disabled={isLoading}
+          rows={1}
+        />
+        <Button 
+          type="submit" 
+          size="icon" 
+          disabled={!message.trim() || isLoading}
+          className="absolute right-1.5 bottom-1.5 h-8 w-8 rounded-lg bg-primary hover:bg-primary/90 transition-all duration-200"
+        >
+          <SendIcon className="h-4 w-4" />
+          <span className="sr-only">Send message</span>
+        </Button>
+      </div>
     </form>
   );
 };

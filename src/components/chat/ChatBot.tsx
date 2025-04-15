@@ -82,18 +82,20 @@ const ChatBot: React.FC<ChatBotProps> = ({ onClose }) => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-background border-r border-border">
-      <div className="p-4 border-b flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Bot className="h-5 w-5 text-primary" />
-          <h2 className="text-lg font-semibold">
+    <div className="flex flex-col h-full bg-background/95 backdrop-blur-md">
+      <div className="p-4 border-b border-border/50 bg-gradient-to-r from-secondary/20 to-primary/20 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center">
+            <Bot className="h-5 w-5 text-primary" />
+          </div>
+          <h2 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary">
             {t('aiChatTitle') || "ParrotBamboo AI"}
           </h2>
         </div>
         {onClose && (
           <button 
             onClick={onClose}
-            className="p-1 rounded-full hover:bg-muted transition-colors"
+            className="p-1.5 rounded-full hover:bg-muted transition-colors"
             aria-label="Close chat"
           >
             <X className="h-5 w-5" />
@@ -103,7 +105,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ onClose }) => {
 
       <div 
         ref={chatContainerRef}
-        className="flex-1 overflow-y-auto p-4 space-y-4"
+        className="flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-background to-background/70"
       >
         {messages.map((msg, index) => (
           <ChatMessage 
@@ -115,18 +117,18 @@ const ChatBot: React.FC<ChatBotProps> = ({ onClose }) => {
         ))}
         
         {isLoading && (
-          <div className="flex items-center gap-2 text-muted-foreground">
+          <div className="flex items-center gap-2 text-muted-foreground animate-pulse">
             <div className="flex space-x-1">
-              <div className="w-2 h-2 bg-muted-foreground/70 rounded-full animate-bounce"></div>
-              <div className="w-2 h-2 bg-muted-foreground/70 rounded-full animate-bounce [animation-delay:0.2s]"></div>
-              <div className="w-2 h-2 bg-muted-foreground/70 rounded-full animate-bounce [animation-delay:0.4s]"></div>
+              <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce"></div>
+              <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce [animation-delay:0.2s]"></div>
+              <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce [animation-delay:0.4s]"></div>
             </div>
             <span className="text-sm">{t('aiThinking') || "Thinking..."}</span>
           </div>
         )}
       </div>
 
-      <div className="p-4 border-t">
+      <div className="p-4 border-t border-border/50 bg-background/80 backdrop-blur-sm">
         <ChatInput onSendMessage={handleSendMessage} isLoading={isLoading} />
       </div>
     </div>
