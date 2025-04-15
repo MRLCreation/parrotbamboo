@@ -1,4 +1,3 @@
-
 export const en = {
   // Navigation items
   home: 'Home',
@@ -170,5 +169,13 @@ export const en = {
   thankYouForMessage: "Thank you for your message. We'll get back to you soon!",
   errorSendingMessage: "Error Sending Message",
   pleaseTryAgainLater: "Please try again later",
-  sending: "Sending..."
+  sending: "Sending...",
+  
+  // AI Chat Bot
+  aiChatTitle: "ParrotBamboo AI",
+  aiWelcomeMessage: "Hello! I'm ParrotBamboo's AI assistant. How can I help you today?",
+  aiThinking: "Thinking...",
+  aiErrorTitle: "Error",
+  aiErrorDescription: "Sorry, I couldn't process your request. Please try again.",
+  chatPlaceholder: "Ask me anything..."
 };

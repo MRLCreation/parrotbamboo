@@ -1,4 +1,3 @@
-
 export const tr = {
   // Navigation items
   home: 'Ana Sayfa',
@@ -170,5 +169,13 @@ export const tr = {
   thankYouForMessage: "Mesajınız için teşekkür ederiz. En kısa sürede size geri döneceğiz!",
   errorSendingMessage: "Mesaj Gönderme Hatası",
   pleaseTryAgainLater: "Lütfen daha sonra tekrar deneyin",
-  sending: "Gönderiliyor..."
+  sending: "Gönderiliyor...",
+  
+  // AI Chat Bot
+  aiChatTitle: "ParrotBamboo AI",
+  aiWelcomeMessage: "Merhaba! Ben ParrotBamboo'nun yapay zeka asistanıyım. Size bugün nasıl yardımcı olabilirim?",
+  aiThinking: "Düşünüyor...",
+  aiErrorTitle: "Hata",
+  aiErrorDescription: "Üzgünüm, isteğinizi işleyemedim. Lütfen tekrar deneyin.",
+  chatPlaceholder: "Herhangi bir şey sor..."
 };
