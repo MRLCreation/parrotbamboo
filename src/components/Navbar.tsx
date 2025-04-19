@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import ParrotAvatar from './common/ParrotAvatar';
 import { DesktopNav } from './navbar/DesktopNav';
@@ -7,34 +7,8 @@ import { MobileNav } from './navbar/MobileNav';
 import { navItems } from './navbar/navItems';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('#home');
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-
-      // Find current active section
-      const sections = navItems.map(item => item.href);
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.querySelector(sections[i]);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 100) {
-            setActiveItem(sections[i]);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrolled]);
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
@@ -47,14 +21,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={cn(
-        'fixed top-0 left-0 w-full z-50 transition-all duration-300',
-        scrolled 
-          ? 'bg-dark/95 backdrop-blur-md py-2 shadow-md' 
-          : 'bg-transparent py-4'
-      )}
-    >
+    <nav className="w-full bg-dark py-4">
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
