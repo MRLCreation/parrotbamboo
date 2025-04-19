@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Languages } from 'lucide-react';
+import { Languages } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../hooks/useLanguage';
@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import ParrotAvatar from './common/ParrotAvatar';
 
-// Simplified menu items - max 5 as requested
+// Simplified menu items
 const navItems = [
   { label: 'home', href: '#home' },
   { label: 'about', href: '#about' },
@@ -22,9 +22,9 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('#home');
+  const [isOpen, setIsOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
@@ -66,29 +66,21 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4',
-        scrolled ? 'bg-dark/95 backdrop-blur-md shadow-md' : 'bg-transparent'
+        'fixed top-0 left-0 w-full z-50 transition-all duration-300',
+        scrolled 
+          ? 'bg-dark/95 backdrop-blur-md py-2 shadow-md' 
+          : 'bg-transparent py-4'
       )}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <motion.a 
-          href="#home" 
-          className="flex items-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <motion.div 
-            className="flex items-center"
-            whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-          >
-            <ParrotAvatar size="lg" className="mr-3" />
-            <span className="text-xl font-bold neon-text">ParrotBamboo</span>
-          </motion.div>
-        </motion.a>
+      <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
+        {/* Logo */}
+        <div className="flex items-center">
+          <ParrotAvatar size="md" className="mr-3" />
+          <span className="text-xl font-bold text-white">ParrotBamboo</span>
+        </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
           <ul className="flex space-x-8">
             {navItems.map((item) => (
               <li key={item.label}>
@@ -98,14 +90,16 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(item.href);
                   }}
-                  className={`text-gray-300 hover:text-white transition-colors relative ${
-                    activeItem === item.href ? 'text-white' : ''
+                  className={`text-base font-medium transition-colors relative py-2 px-1 ${
+                    activeItem === item.href 
+                      ? 'text-white' 
+                      : 'text-gray-300 hover:text-white'
                   }`}
                 >
                   {t(item.label as any)}
                   {activeItem === item.href && (
                     <motion.span 
-                      className="absolute left-0 -bottom-1 w-full h-0.5 bg-neon-yellow"
+                      className="absolute bottom-0 left-0 w-full h-0.5 bg-neon-yellow"
                       layoutId="activeNavIndicator"
                       transition={{ type: "spring", duration: 0.5 }}
                     />
@@ -118,14 +112,10 @@ export default function Navbar() {
           {/* Language selector */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <motion.button 
-                className="flex items-center text-white p-2 rounded-full hover:bg-dark-lighter"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="flex items-center text-white p-2 rounded-full hover:bg-dark-lighter">
                 <Languages className="h-5 w-5 mr-1" />
                 <span className="text-sm font-medium">{language === 'en' ? 'EN' : 'TR'}</span>
-              </motion.button>
+              </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem 
@@ -144,94 +134,66 @@ export default function Navbar() {
           </DropdownMenu>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="flex items-center space-x-4 md:hidden">
-          {/* Language selector for mobile */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <motion.button 
-                className="flex items-center text-white"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Languages className="h-5 w-5" />
-              </motion.button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem 
-                className={language === 'en' ? 'bg-accent/20' : ''}
-                onClick={() => setLanguage('en')}
-              >
-                English
-              </DropdownMenuItem>
-              <DropdownMenuItem 
-                className={language === 'tr' ? 'bg-accent/20' : ''}
-                onClick={() => setLanguage('tr')}
-              >
-                Türkçe
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          
-          <motion.button 
-            className="text-white"
+        {/* Mobile menu button */}
+        <div className="md:hidden flex items-center">
+          <button 
             onClick={() => setIsOpen(!isOpen)}
-            whileTap={{ scale: 0.9 }}
-            whileHover={{ scale: 1.1 }}
+            className="text-white flex flex-col items-center justify-center p-2"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
+            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-white my-1 transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
+            <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+          </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <motion.div
+      {/* Mobile Navigation Dropdown */}
+      <div 
         className={cn(
-          'fixed inset-0 bg-dark-lighter/95 backdrop-blur-md z-40 md:hidden',
-          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          "md:hidden absolute w-full bg-dark/95 backdrop-blur-md transition-all duration-300 shadow-lg",
+          isOpen ? "max-h-64 py-4" : "max-h-0 overflow-hidden"
         )}
-        initial={false}
-        animate={{ opacity: isOpen ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
       >
-        <div className="flex flex-col items-center justify-center h-full">
-          <motion.ul 
-            className="space-y-6 text-center"
-            initial="closed"
-            animate={isOpen ? "open" : "closed"}
-            variants={{
-              open: {
-                transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-              },
-              closed: {}
-            }}
-          >
-            {navItems.map((item, i) => (
-              <motion.li 
-                key={item.label} 
-                className="text-xl"
-                variants={{
-                  open: { opacity: 1, y: 0 },
-                  closed: { opacity: 0, y: 20 }
-                }}
-              >
+        <div className="container mx-auto px-4">
+          <ul className="flex flex-col space-y-4">
+            {navItems.map((item) => (
+              <li key={item.label}>
                 <a
                   href={item.href}
                   onClick={(e) => {
                     e.preventDefault();
                     handleNavClick(item.href);
                   }}
-                  className={`text-gray-300 hover:text-white transition-colors ${
-                    activeItem === item.href ? 'text-white' : ''
+                  className={`block text-base py-2 ${
+                    activeItem === item.href 
+                      ? 'text-white font-medium' 
+                      : 'text-gray-300'
                   }`}
                 >
                   {t(item.label as any)}
                 </a>
-              </motion.li>
+              </li>
             ))}
-          </motion.ul>
+          </ul>
+          
+          {/* Mobile Language selector */}
+          <div className="mt-4 border-t border-gray-700 pt-4 flex items-center">
+            <span className="text-gray-400 mr-2">Language:</span>
+            <button 
+              onClick={() => setLanguage('en')}
+              className={`mr-4 ${language === 'en' ? 'text-white font-medium' : 'text-gray-300'}`}
+            >
+              English
+            </button>
+            <button 
+              onClick={() => setLanguage('tr')}
+              className={`${language === 'tr' ? 'text-white font-medium' : 'text-gray-300'}`}
+            >
+              Türkçe
+            </button>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </nav>
   );
 }
