@@ -1,24 +1,18 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Rocket } from 'lucide-react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { cn } from '@/lib/utils';
 
 interface HeroTitleProps {
   isMobile: boolean;
-  isItalic?: boolean;
 }
 
-const HeroTitle: React.FC<HeroTitleProps> = ({ isMobile, isItalic = false }) => {
+const HeroTitle: React.FC<HeroTitleProps> = ({ isMobile }) => {
   const { t, language } = useLanguage();
   
   return (
     <div key={`hero-title-${language}`}>
-      <h1 className={cn(
-        `${isMobile ? 'text-3xl' : 'text-4xl md:text-6xl lg:text-7xl'} font-bold mb-6`,
-        isItalic && 'italic'
-      )}>
+      <h1 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-6xl lg:text-7xl'} font-bold mb-6`}>
         <motion.div
           className="flex items-center justify-center mb-2"
           initial={{ scale: 0.9 }}
@@ -58,10 +52,7 @@ const HeroTitle: React.FC<HeroTitleProps> = ({ isMobile, isItalic = false }) => 
         </motion.div>
         
         <motion.span 
-          className={cn(
-            "block mt-2 text-white",
-            isItalic && 'italic'
-          )}
+          className="block mt-2 text-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
