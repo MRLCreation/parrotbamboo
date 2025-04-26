@@ -22,7 +22,7 @@ export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
   };
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-dark/95 backdrop-blur-md border-t border-gray-800 safe-bottom z-50">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-dark/80 backdrop-blur-lg border-t border-white/10 safe-bottom z-50">
       <div className="container mx-auto px-4">
         {/* Main Navigation */}
         <div className="py-2">
@@ -34,14 +34,19 @@ export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
                   <button
                     onClick={() => handleNavClick(item.href)}
                     className={cn(
-                      "flex flex-col items-center p-2 rounded-lg transition-colors",
+                      "flex flex-col items-center p-2 rounded-lg transition-all duration-200",
                       activeItem === item.href 
-                        ? 'text-primary' 
-                        : 'text-gray-400 hover:text-gray-300'
+                        ? 'text-white scale-110' 
+                        : 'text-gray-400 hover:text-white/90'
                     )}
                     aria-label={t(item.label as any)}
                   >
-                    {IconComponent && <IconComponent className="h-5 w-5 mb-1" />}
+                    {IconComponent && (
+                      <IconComponent 
+                        className="h-5 w-5 mb-1" 
+                        strokeWidth={1.5}
+                      />
+                    )}
                     <span className="text-xs font-medium">
                       {t(item.label as any)}
                     </span>
@@ -53,7 +58,7 @@ export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
         </div>
         
         {/* Language selector for mobile */}
-        <div className="flex justify-center py-2 border-t border-gray-800">
+        <div className="flex justify-center py-2 border-t border-white/10">
           <LanguageSelector />
         </div>
       </div>
