@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import { useLanguage } from '../../hooks/useLanguage';
 import { navItems } from './navItems';
 import { LanguageSelector } from './LanguageSelector';
+import { Home, User, List, Settings } from 'lucide-react';
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -10,54 +11,44 @@ interface MobileNavProps {
   handleNavClick: (href: string) => void;
 }
 
-export function MobileNav({ isOpen, activeItem, handleNavClick }: MobileNavProps) {
+export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
   const { language, setLanguage, t } = useLanguage();
+  
+  const navIcons = {
+    '#home': Home,
+    '#about': User,
+    '#services': List,
+    '#contact': Settings,
+  };
 
   return (
-    <div 
-      className={cn(
-        "md:hidden absolute top-full left-0 right-0 w-full bg-dark/95 backdrop-blur-md transition-all duration-300 z-50 shadow-lg",
-        isOpen ? "max-h-64 py-4" : "max-h-0 overflow-hidden"
-      )}
-    >
+    <div className="md:hidden fixed bottom-0 left-0 right-0 bg-dark/95 backdrop-blur-md border-t border-gray-800 safe-bottom z-50">
       <div className="container mx-auto px-4">
-        <ul className="flex flex-col space-y-4">
-          {navItems.map((item) => (
-            <li key={item.label}>
-              <button
-                onClick={() => handleNavClick(item.href)}
-                className={`block w-full text-left text-base py-2 ${
-                  activeItem === item.href 
-                    ? 'text-white font-medium' 
-                    : 'text-gray-300'
-                }`}
-              >
-                {t(item.label as any)}
-              </button>
-            </li>
-          ))}
-        </ul>
-        
-        <div className="mt-4 border-t border-gray-700 pt-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <span className="text-gray-400 mr-2">Language:</span>
-            <button 
-              onClick={() => setLanguage('en')}
-              className={`mr-4 ${language === 'en' ? 'text-white font-medium' : 'text-gray-300'}`}
-            >
-              English
-            </button>
-            <button 
-              onClick={() => setLanguage('tr')}
-              className={`${language === 'tr' ? 'text-white font-medium' : 'text-gray-300'}`}
-            >
-              Türkçe
-            </button>
-          </div>
-          
-          <div className="flex items-center">
-            <LanguageSelector />
-          </div>
+        {/* Main Navigation */}
+        <div className="py-2">
+          <ul className="grid grid-cols-4 gap-2">
+            {navItems.map((item) => {
+              const IconComponent = navIcons[item.href as keyof typeof navIcons];
+              return (
+                <li key={item.label} className="flex justify-center">
+                  <button
+                    onClick={() => handleNavClick(item.href)}
+                    className={cn(
+                      "flex flex-col items-center p-2 rounded-lg transition-colors",
+                      activeItem === item.href 
+                        ? 'text-primary' 
+                        : 'text-gray-400 hover:text-gray-300'
+                    )}
+                  >
+                    <IconComponent className="h-5 w-5 mb-1" />
+                    <span className="text-xs font-medium">
+                      {t(item.label as any)}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </div>
