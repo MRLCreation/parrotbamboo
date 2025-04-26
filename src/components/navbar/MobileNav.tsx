@@ -12,9 +12,9 @@ interface MobileNavProps {
 }
 
 export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
-  const { language, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
   
-  const navIcons = {
+  const navIcons: Record<string, React.ElementType> = {
     '#home': Home,
     '#about': User,
     '#services': List,
@@ -28,7 +28,7 @@ export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
         <div className="py-2">
           <ul className="grid grid-cols-4 gap-2">
             {navItems.map((item) => {
-              const IconComponent = navIcons[item.href as keyof typeof navIcons];
+              const IconComponent = navIcons[item.href];
               return (
                 <li key={item.label} className="flex justify-center">
                   <button

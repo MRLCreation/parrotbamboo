@@ -14,11 +14,27 @@ export default function Navbar() {
   useEffect(() => {
     const hash = window.location.hash || '#home';
     setActiveItem(hash);
+
+    // Add hash change listener
+    const handleHashChange = () => {
+      const newHash = window.location.hash || '#home';
+      setActiveItem(newHash);
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
     setActiveItem(href);
+    
+    // Update URL hash
+    if (window.history.pushState) {
+      window.history.pushState(null, '', href);
+    } else {
+      window.location.hash = href;
+    }
     
     const element = document.querySelector(href);
     if (element) {
