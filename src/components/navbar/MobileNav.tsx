@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { useLanguage } from '../../hooks/useLanguage';
 import { navItems } from './navItems';
 import { LanguageSelector } from './LanguageSelector';
-import { Home, User, List, Settings } from 'lucide-react';
+import { Home, User, List, Building, Settings } from 'lucide-react';
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -18,6 +18,7 @@ export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
     '#home': Home,
     '#about': User,
     '#services': List,
+    '#partners': Building,
     '#contact': Settings,
   };
 
@@ -26,7 +27,7 @@ export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
       <div className="container mx-auto px-4">
         {/* Main Navigation */}
         <div className="py-2">
-          <ul className="grid grid-cols-4 gap-2">
+          <ul className="grid grid-cols-5 gap-1">
             {navItems.map((item) => {
               const IconComponent = navIcons[item.href];
               return (
@@ -47,7 +48,7 @@ export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
                         strokeWidth={1.5}
                       />
                     )}
-                    <span className="text-xs font-medium">
+                    <span className="text-[10px] font-medium">
                       {t(item.label as any)}
                     </span>
                   </button>
