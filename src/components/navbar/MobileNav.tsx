@@ -39,8 +39,9 @@ export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
                         ? 'text-primary' 
                         : 'text-gray-400 hover:text-gray-300'
                     )}
+                    aria-label={t(item.label as any)}
                   >
-                    <IconComponent className="h-5 w-5 mb-1" />
+                    {IconComponent && <IconComponent className="h-5 w-5 mb-1" />}
                     <span className="text-xs font-medium">
                       {t(item.label as any)}
                     </span>
@@ -49,6 +50,11 @@ export function MobileNav({ activeItem, handleNavClick }: MobileNavProps) {
               );
             })}
           </ul>
+        </div>
+        
+        {/* Language selector for mobile */}
+        <div className="flex justify-center py-2 border-t border-gray-800">
+          <LanguageSelector />
         </div>
       </div>
     </div>
