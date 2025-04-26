@@ -21,7 +21,7 @@ export default function HeroSection() {
   return (
     <section 
       id="home" 
-      className={`min-h-screen flex items-center justify-center bg-gradient-to-br from-dark via-dark-lighter to-dark ${isMobile ? 'pt-8' : 'pt-16'} relative overflow-hidden`}
+      className={`min-h-screen flex items-center justify-center bg-gradient-to-br from-dark via-dark-lighter to-dark ${isMobile ? 'pt-16' : 'pt-20'} relative overflow-hidden`}
       aria-label="Hero section"
     >
       {/* Space/Alien background */}
