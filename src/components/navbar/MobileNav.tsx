@@ -15,7 +15,7 @@ export function MobileNav({ isOpen, activeItem, handleNavClick }: MobileNavProps
   return (
     <div 
       className={cn(
-        "md:hidden absolute w-full bg-dark/95 backdrop-blur-md transition-all duration-300 shadow-lg",
+        "md:hidden absolute top-full left-0 right-0 w-full bg-dark/95 backdrop-blur-md transition-all duration-300 z-50 shadow-lg",
         isOpen ? "max-h-64 py-4" : "max-h-0 overflow-hidden"
       )}
     >
@@ -23,20 +23,16 @@ export function MobileNav({ isOpen, activeItem, handleNavClick }: MobileNavProps
         <ul className="flex flex-col space-y-4">
           {navItems.map((item) => (
             <li key={item.label}>
-              <a
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }}
-                className={`block text-base py-2 ${
+              <button
+                onClick={() => handleNavClick(item.href)}
+                className={`block w-full text-left text-base py-2 ${
                   activeItem === item.href 
                     ? 'text-white font-medium' 
                     : 'text-gray-300'
                 }`}
               >
                 {t(item.label as any)}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
