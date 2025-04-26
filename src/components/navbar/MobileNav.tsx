@@ -2,6 +2,7 @@
 import { cn } from '@/lib/utils';
 import { useLanguage } from '../../hooks/useLanguage';
 import { navItems } from './navItems';
+import { LanguageSelector } from './LanguageSelector';
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -37,20 +38,26 @@ export function MobileNav({ isOpen, activeItem, handleNavClick }: MobileNavProps
           ))}
         </ul>
         
-        <div className="mt-4 border-t border-gray-700 pt-4 flex items-center">
-          <span className="text-gray-400 mr-2">Language:</span>
-          <button 
-            onClick={() => setLanguage('en')}
-            className={`mr-4 ${language === 'en' ? 'text-white font-medium' : 'text-gray-300'}`}
-          >
-            English
-          </button>
-          <button 
-            onClick={() => setLanguage('tr')}
-            className={`${language === 'tr' ? 'text-white font-medium' : 'text-gray-300'}`}
-          >
-            Türkçe
-          </button>
+        <div className="mt-4 border-t border-gray-700 pt-4 flex items-center justify-between">
+          <div className="flex items-center">
+            <span className="text-gray-400 mr-2">Language:</span>
+            <button 
+              onClick={() => setLanguage('en')}
+              className={`mr-4 ${language === 'en' ? 'text-white font-medium' : 'text-gray-300'}`}
+            >
+              English
+            </button>
+            <button 
+              onClick={() => setLanguage('tr')}
+              className={`${language === 'tr' ? 'text-white font-medium' : 'text-gray-300'}`}
+            >
+              Türkçe
+            </button>
+          </div>
+          
+          <div className="flex items-center">
+            <LanguageSelector />
+          </div>
         </div>
       </div>
     </div>
