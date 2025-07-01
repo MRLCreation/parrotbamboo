@@ -177,5 +177,95 @@ export const tr = {
   aiThinking: "Düşünüyor...",
   aiErrorTitle: "Hata",
   aiErrorDescription: "Üzgünüm, isteğinizi işleyemedim. Lütfen tekrar deneyin.",
-  chatPlaceholder: "Herhangi bir şey sor..."
+  chatPlaceholder: "Herhangi bir şey sor...",
+  
+  // Services Section  
+  ourServices: "Hizmetlerimiz",
+  whatWeOffer: "Neler Sunuyoruz",
+  
+  // Service titles and descriptions
+  socialMediaGrowthTitle: "Sosyal Medya Büyümesi ve Yönetimi",
+  socialMediaGrowthDesc: "Web3 alanında önde gelen platformlarda stratejik büyüme ve etkileşim.",
+  amaEventHostingTitle: "AMA ve Etkinlik Sunumu",
+  amaEventHostingDesc: "Proje görünürlüğünü artırmak için sanal etkinliklerin profesyonel sunumu ve yönetimi.",
+  corporatePartnershipsTitle: "Kurumsal Ortaklıklar ve Listeler",
+  corporatePartnershipsDesc: "Proje güvenilirliğini ve erişimini artırmak için stratejik ortaklıklar ve borsa listeleri.",
+  brandPromotionTitle: "Marka Tanıtımı",
+  brandPromotionDesc: "Web3 projeleri için özelleştirilmiş kapsamlı marka oluşturma stratejileri.",
+  contentCreationTitle: "İçerik Oluşturma",
+  contentCreationDesc: "Blokzincir projeleri için teknik ve pazarlama içeriğinin uzman gelişimi.",
+  creativeServicesTitle: "Kreatif Hizmetler",
+  creativeServicesDesc: "Fikirlerinizi büyüleyen ve etkileşim kuran görsellerle hayata geçirin.",
+  
+  // Service features
+  socialMediaFeatures: [
+    "Twitter (X) topluluk oluşturma ve etkileşim",
+    "Telegram grup yönetimi ve moderasyonu",
+    "YouTube kanal optimizasyonu ve içerik stratejisi", 
+    "Binance Square varlığı oluşturma",
+    "Kapsamlı sosyal medya analitiği ve raporlama"
+  ],
+  amaEventFeatures: [
+    "Sektör liderleriyle X Space etkinlikleri",
+    "Twitter Sesli Canlı yayınlar ve tartışmalar",
+    "Etkileşimli topluluklarla Telegram Sesli Canlı oturumları",
+    "Binance Canlı yayınlar ve tanıtım etkinlikleri", 
+    "Blokzincir konularında moderasyonlu panel tartışmaları",
+    "Proje ekipleriyle topluluk S&C oturumları",
+    "Etkinlik sonrası içerik dağıtımı ve amplifikasyon"
+  ],
+  corporatePartnershipFeatures: [
+    "Borsa listesi edinimi ve yönetimi",
+    "Önemli sektör oyuncularıyla stratejik ortaklık geliştirme", 
+    "Ortaklık müzakeresi ve ilişki yönetimi",
+    "Yerleşik projelerle ortak pazarlama fırsatları",
+    "Sektör ittifakı oluşturma ve yönetimi"
+  ],
+  brandPromotionFeatures: [
+    "Platformlar arası entegre pazarlama kampanyaları",
+    "Kreatif sosyal medya içeriği oluşturma",
+    "Marka kimliği geliştirme ve iyileştirme",
+    "Topluluk odaklı tanıtım aktiviteleri",
+    "Marka bilinirliği metrikleri ve performans takibi"
+  ],
+  contentCreationFeatures: [
+    "Beyaz kağıt yazma ve düzenleme",
+    "Gitbook dokümantasyon oluşturma", 
+    "Pazarlama materyali geliştirme",
+    "Web3 kavramları için teknik makale yazımı",
+    "Sosyal medya içerik takvimleri ve oluşturma"
+  ],
+  creativeServicesFeatures: [
+    "Grafik Tasarım: Logolar, marka kimliği, web ve uygulama tasarımları",
+    "Video Düzenleme: Tanıtım videoları, öğreticiler, etkinlik özetleri",
+    "3D Tasarım ve Animasyon: 3D modelleme, animasyonlar, ürün görselleri",
+    "Web3 ve Blokzincir Animasyonları: Açıklayıcılar, tokenomik, NFT varlıkları", 
+    "Web3 uygulamaları ve platformları için UI/UX tasarımı"
+  ],
+  
+  // Platform names
+  binanceLiveLabel: "Binance Live",
+  xAudioLabel: "X Audio",
+  telegramLabel: "Telegram", 
+  graphicsDesignLabel: "Grafik Tasarım",
+  videoProductionLabel: "Video Prodüksiyon",
+  
+  // AMA Event descriptions
+  binanceEventDesc: "Dünyanın en büyük kripto borsası platformunda milyonlarca kullanıcıya ulaşın",
+  twitterEventDesc: "Twitter'ın sesli alanları aracılığıyla topluluğunuzla bağlantı kurun",
+  telegramEventDesc: "Telegram topluluklarında etkileşimli sesli oturumlar düzenleyin",
+  
+  // Event features
+  binanceGlobalAudienceText: "Binance'in küresel kitlesine erişim",
+  scheduledPromotionalEventsText: "Planlanmış tanıtım etkinlikleri",
+  professionalHostingText: "Profesyonel sunum ve moderasyon", 
+  liveQASessionsText: "Ekibinizle canlı soru-cevap oturumları",
+  engageCryptoEnthusiastsText: "Kripto meraklılarıyla etkileşim kurun",
+  regularTwitterSpacesText: "Düzenli Twitter Space etkinlikleri",
+  industryExpertDiscussionsText: "Sektör uzmanı tartışmaları",
+  communityQASessionsText: "Topluluk odaklı soru-cevap oturumları", 
+  directTelegramAccessText: "Telegram topluluklarına doğrudan erişim",
+  scheduledAMASessionsText: "Meraklılarla planlanmış AMA oturumları",
+  interactiveVoiceDiscussionsText: "Etkileşimli sesli tartışmalar",
+  realtimeCommunityEngagementText: "Gerçek zamanlı topluluk etkileşimi"
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MessageSquare, BarChart3, Link, Users, FileText, ChevronRight, Globe, Youtube, Twitter, Image, Video, Zap, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useLanguage } from '@/hooks/useLanguage';
 import { 
   Accordion,
   AccordionContent,
@@ -19,81 +20,44 @@ interface Service {
 export default function ServicesSection() {
   const [activeService, setActiveService] = useState<number>(0);
   const isMobile = useIsMobile();
+  const { t } = useLanguage();
   
   const services: Service[] = [
     {
       icon: <BarChart3 size={24} />,
-      title: "Social Media Growth & Management",
-      description: "Strategic growth and engagement across leading platforms in the Web3 space.",
-      features: [
-        "Twitter (X) community building and engagement",
-        "Telegram group management and moderation",
-        "YouTube channel optimization and content strategy",
-        "Binance Square presence establishment",
-        "Comprehensive social media analytics and reporting"
-      ]
+      title: t('socialMediaGrowthTitle'),
+      description: t('socialMediaGrowthDesc'),
+      features: t('socialMediaFeatures')
     },
     {
       icon: <MessageSquare size={24} />,
-      title: "AMA & Event Hosting",
-      description: "Professional hosting and management of virtual events to increase project visibility.",
-      features: [
-        "X Space events with industry leaders",
-        "Twitter Audio Live broadcasts and discussions",
-        "Telegram Audio Live sessions with engaged communities",
-        "Binance Live broadcasts and promotional events",
-        "Moderated panel discussions on blockchain topics",
-        "Community Q&A sessions with project teams",
-        "Post-event content distribution and amplification"
-      ]
+      title: t('amaEventHostingTitle'),
+      description: t('amaEventHostingDesc'),
+      features: t('amaEventFeatures')
     },
     {
       icon: <Link size={24} />,
-      title: "Corporate Partnerships & Listings",
-      description: "Strategic partnerships and exchange listings to boost project credibility and reach.",
-      features: [
-        "Exchange listing acquisition and management",
-        "Strategic partnership development with key industry players",
-        "Partnership negotiation and relationship management",
-        "Co-marketing opportunities with established projects",
-        "Industry alliance building and management"
-      ]
+      title: t('corporatePartnershipsTitle'),
+      description: t('corporatePartnershipsDesc'),
+      features: t('corporatePartnershipFeatures')
     },
     {
       icon: <Users size={24} />,
-      title: "Brand Promotion",
-      description: "Comprehensive brand building strategies tailored for Web3 projects.",
-      features: [
-        "Integrated marketing campaigns across platforms",
-        "Creative social media content creation",
-        "Brand identity development and refinement",
-        "Community-focused promotional activities",
-        "Brand awareness metrics and performance tracking"
-      ]
+      title: t('brandPromotionTitle'),
+      description: t('brandPromotionDesc'),
+      features: t('brandPromotionFeatures')
     },
     {
       icon: <FileText size={24} />,
-      title: "Content Creation",
-      description: "Expert development of technical and marketing content for blockchain projects.",
-      features: [
-        "Whitepaper writing and editing",
-        "Gitbook documentation creation",
-        "Marketing materials development",
-        "Technical article writing for Web3 concepts",
-        "Social media content calendars and creation"
-      ]
+      title: t('contentCreationTitle'),
+      description: t('contentCreationDesc'),
+      features: t('contentCreationFeatures')
     },
     {
       icon: <Image size={24} />,
-      title: "Creative Services",
-      description: "Bring your ideas to life with visuals that captivate and engage.",
-      features: [
-        "Graphics Design: Logos, brand identity, web & app designs",
-        "Video Editing: Promotional videos, tutorials, event recaps",
-        "3D Design & Animation: 3D modeling, animations, product visuals",
-        "Web3 & Blockchain Animations: Explainers, tokenomics, NFT assets",
-        "UI/UX design for Web3 applications and platforms"
-      ]
+      title: t('creativeServicesTitle'),
+      description: t('creativeServicesDesc'),
+      features: t('creativeServicesFeatures')
     }
   ];
 
@@ -106,8 +70,8 @@ export default function ServicesSection() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="mb-12 text-center">
-            <span className="inline-block px-4 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-medium mb-4">Our Services</span>
-            <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-blue to-neon-purple">What We Offer</h2>
+            <span className="inline-block px-4 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-medium mb-4">{t('ourServices')}</span>
+            <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-blue to-neon-purple">{t('whatWeOffer')}</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto"></div>
           </div>
 
@@ -149,7 +113,7 @@ export default function ServicesSection() {
                             className="w-6 h-6" 
                           />
                         </div>
-                        <span className="text-white font-medium text-xs">Binance Live</span>
+                        <span className="text-white font-medium text-xs">{t('binanceLiveLabel')}</span>
                       </div>
                       <div className="flex flex-col items-center space-y-2 p-3 rounded-lg bg-dark-lighter/70 border border-neon-blue/20">
                         <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
@@ -159,7 +123,7 @@ export default function ServicesSection() {
                             className="w-6 h-6" 
                           />
                         </div>
-                        <span className="text-white font-medium text-xs">X Audio</span>
+                        <span className="text-white font-medium text-xs">{t('xAudioLabel')}</span>
                       </div>
                       <div className="flex flex-col items-center space-y-2 p-3 rounded-lg bg-dark-lighter/70 border border-[#0088cc]/20">
                         <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
@@ -169,7 +133,7 @@ export default function ServicesSection() {
                             className="w-6 h-6" 
                           />
                         </div>
-                        <span className="text-white font-medium text-xs">Telegram</span>
+                        <span className="text-white font-medium text-xs">{t('telegramLabel')}</span>
                       </div>
                     </div>
                   )}
@@ -180,13 +144,13 @@ export default function ServicesSection() {
                         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center">
                           <Image size={16} className="text-white" />
                         </div>
-                        <span className="text-white text-xs">Graphics Design</span>
+                        <span className="text-white text-xs">{t('graphicsDesignLabel')}</span>
                       </div>
                       <div className="flex items-center space-x-3 p-3 rounded-lg bg-dark-lighter/70">
                         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center">
                           <Video size={16} className="text-white" />
                         </div>
-                        <span className="text-white text-xs">Video Production</span>
+                        <span className="text-white text-xs">{t('videoProductionLabel')}</span>
                       </div>
                     </div>
                   )}
@@ -200,7 +164,7 @@ export default function ServicesSection() {
                       }}
                       className="inline-block px-5 py-2 bg-gradient-to-r from-neon-blue to-neon-purple rounded-full text-white text-sm font-medium"
                     >
-                      Get Started
+                      {t('getStarted')}
                     </a>
                   </div>
                 </AccordionContent>
@@ -256,8 +220,8 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-4 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-medium mb-4">Our Services</span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-blue to-neon-purple">What We Offer</h2>
+          <span className="inline-block px-4 py-1 rounded-full bg-neon-purple/10 text-neon-purple text-sm font-medium mb-4">{t('ourServices')}</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-yellow via-neon-blue to-neon-purple">{t('whatWeOffer')}</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto"></div>
         </motion.div>
 
@@ -368,7 +332,7 @@ export default function ServicesSection() {
                       />
                     </motion.div>
                   </div>
-                  <span className="text-white font-medium text-sm">Binance Live</span>
+                  <span className="text-white font-medium text-sm">{t('binanceLiveLabel')}</span>
                   <div className="flex space-x-1">
                     {[...Array(5)].map((_, i) => (
                       <motion.div
@@ -408,7 +372,7 @@ export default function ServicesSection() {
                       />
                     </motion.div>
                   </div>
-                  <span className="text-white font-medium text-sm">Twitter Audio Live</span>
+                  <span className="text-white font-medium text-sm">{t('xAudioLabel')}</span>
                   <div className="flex space-x-1">
                     {[...Array(4)].map((_, i) => (
                       <motion.div 
@@ -451,7 +415,7 @@ export default function ServicesSection() {
                       />
                     </motion.div>
                   </div>
-                  <span className="text-white font-medium text-sm">Telegram Audio Live</span>
+                  <span className="text-white font-medium text-sm">{t('telegramLabel')}</span>
                   <div className="flex space-x-1">
                     {[...Array(4)].map((_, i) => (
                       <motion.div 
@@ -498,7 +462,7 @@ export default function ServicesSection() {
                       <Image size={24} className="text-white" />
                     </motion.div>
                   </div>
-                  <span className="text-white font-medium text-sm">Graphics Design</span>
+                  <span className="text-white font-medium text-sm">{t('graphicsDesignLabel')}</span>
                   <motion.div
                     className="h-3 w-24 bg-gray-700 rounded-full overflow-hidden"
                     initial={{ width: 0 }}
@@ -525,7 +489,7 @@ export default function ServicesSection() {
                       <Video size={24} className="text-white" />
                     </motion.div>
                   </div>
-                  <span className="text-white font-medium text-sm">Video Production</span>
+                  <span className="text-white font-medium text-sm">{t('videoProductionLabel')}</span>
                   <div className="flex space-x-1">
                     {[...Array(5)].map((_, i) => (
                       <motion.div 
@@ -562,7 +526,7 @@ export default function ServicesSection() {
                       </svg>
                     </motion.div>
                   </div>
-                  <span className="text-white font-medium text-sm">3D Animation</span>
+                  <span className="text-white font-medium text-sm">{t('animation3d')}</span>
                   <motion.div 
                     className="w-6 h-6 bg-green-500/30 rounded-full"
                     animate={{
@@ -592,7 +556,7 @@ export default function ServicesSection() {
                       <Zap size={24} className="text-white" />
                     </motion.div>
                   </div>
-                  <span className="text-white font-medium text-sm">Web3 Animations</span>
+                  <span className="text-white font-medium text-sm">{t('blockchainAnimations')}</span>
                   <div className="flex space-x-1">
                     {[...Array(3)].map((_, i) => (
                       <motion.div 
@@ -625,7 +589,7 @@ export default function ServicesSection() {
                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(139, 92, 246, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get Started
+                {t('getStarted')}
               </motion.a>
             </div>
           </motion.div>

@@ -177,5 +177,95 @@ export const en = {
   aiThinking: "Thinking...",
   aiErrorTitle: "Error",
   aiErrorDescription: "Sorry, I couldn't process your request. Please try again.",
-  chatPlaceholder: "Ask me anything..."
+  chatPlaceholder: "Ask me anything...",
+  
+  // Services Section
+  ourServices: "Our Services",
+  whatWeOffer: "What We Offer",
+  
+  // Service titles and descriptions
+  socialMediaGrowthTitle: "Social Media Growth & Management",
+  socialMediaGrowthDesc: "Strategic growth and engagement across leading platforms in the Web3 space.",
+  amaEventHostingTitle: "AMA & Event Hosting",
+  amaEventHostingDesc: "Professional hosting and management of virtual events to increase project visibility.",
+  corporatePartnershipsTitle: "Corporate Partnerships & Listings",
+  corporatePartnershipsDesc: "Strategic partnerships and exchange listings to boost project credibility and reach.",
+  brandPromotionTitle: "Brand Promotion",
+  brandPromotionDesc: "Comprehensive brand building strategies tailored for Web3 projects.",
+  contentCreationTitle: "Content Creation",
+  contentCreationDesc: "Expert development of technical and marketing content for blockchain projects.",
+  creativeServicesTitle: "Creative Services",
+  creativeServicesDesc: "Bring your ideas to life with visuals that captivate and engage.",
+  
+  // Service features
+  socialMediaFeatures: [
+    "Twitter (X) community building and engagement",
+    "Telegram group management and moderation", 
+    "YouTube channel optimization and content strategy",
+    "Binance Square presence establishment",
+    "Comprehensive social media analytics and reporting"
+  ],
+  amaEventFeatures: [
+    "X Space events with industry leaders",
+    "Twitter Audio Live broadcasts and discussions",
+    "Telegram Audio Live sessions with engaged communities", 
+    "Binance Live broadcasts and promotional events",
+    "Moderated panel discussions on blockchain topics",
+    "Community Q&A sessions with project teams",
+    "Post-event content distribution and amplification"
+  ],
+  corporatePartnershipFeatures: [
+    "Exchange listing acquisition and management",
+    "Strategic partnership development with key industry players",
+    "Partnership negotiation and relationship management", 
+    "Co-marketing opportunities with established projects",
+    "Industry alliance building and management"
+  ],
+  brandPromotionFeatures: [
+    "Integrated marketing campaigns across platforms",
+    "Creative social media content creation",
+    "Brand identity development and refinement",
+    "Community-focused promotional activities", 
+    "Brand awareness metrics and performance tracking"
+  ],
+  contentCreationFeatures: [
+    "Whitepaper writing and editing",
+    "Gitbook documentation creation",
+    "Marketing materials development",
+    "Technical article writing for Web3 concepts",
+    "Social media content calendars and creation"
+  ],
+  creativeServicesFeatures: [
+    "Graphics Design: Logos, brand identity, web & app designs",
+    "Video Editing: Promotional videos, tutorials, event recaps",
+    "3D Design & Animation: 3D modeling, animations, product visuals",
+    "Web3 & Blockchain Animations: Explainers, tokenomics, NFT assets",
+    "UI/UX design for Web3 applications and platforms"
+  ],
+  
+  // Platform names
+  binanceLiveLabel: "Binance Live",
+  xAudioLabel: "X Audio", 
+  telegramLabel: "Telegram",
+  graphicsDesignLabel: "Graphics Design",
+  videoProductionLabel: "Video Production",
+  
+  // AMA Event descriptions
+  binanceEventDesc: "Reach millions of users on the world's largest crypto exchange platform",
+  twitterEventDesc: "Connect with your community through Twitter's audio spaces",
+  telegramEventDesc: "Host engaging audio sessions in Telegram communities",
+  
+  // Event features
+  binanceGlobalAudienceText: "Access to Binance's global audience",
+  scheduledPromotionalEventsText: "Scheduled promotional events", 
+  professionalHostingText: "Professional hosting and moderation",
+  liveQASessionsText: "Live Q&A sessions with your team",
+  engageCryptoEnthusiastsText: "Engage with crypto enthusiasts",
+  regularTwitterSpacesText: "Regular Twitter Space events",
+  industryExpertDiscussionsText: "Industry expert discussions", 
+  communityQASessionsText: "Community-driven Q&A sessions",
+  directTelegramAccessText: "Direct access to Telegram communities",
+  scheduledAMASessionsText: "Scheduled AMA sessions with enthusiasts",
+  interactiveVoiceDiscussionsText: "Interactive voice discussions",
+  realtimeCommunityEngagementText: "Real-time community engagement"
 };
