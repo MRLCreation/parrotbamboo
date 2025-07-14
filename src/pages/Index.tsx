@@ -8,7 +8,7 @@ import TeamSection from '../components/TeamSection';
 import ServicesSection from '../components/ServicesSection';
 import PartnersSection from '../components/PartnersSection';
 import ExperienceSection from '../components/ExperienceSection';
-import { ContactSection } from '../components/contact';
+
 import Footer from '../components/Footer';
 import AMAEventHostingSection from '../components/AMAEventHostingSection';
 import { useLanguage } from '../hooks/useLanguage';
@@ -59,7 +59,7 @@ const Index = () => {
       <PartnersSection />
       <ExperienceSection />
       <TeamSection />
-      <ContactSection />
+      
       <Footer />
     </div>
   );
